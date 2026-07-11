@@ -312,21 +312,37 @@ button { font: inherit; cursor: pointer; }
   margin-bottom: 12px;
 }
 .match-time { color: var(--women); font-weight: 700; }
-.match-teams {
+.team-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 14px;
+  padding: 7px 0;
+}
+.team-row + .team-row { border-top: 1px dashed rgba(244, 246, 238, 0.18); }
+.t-name {
   font-family: var(--display);
   font-stretch: condensed;
   text-transform: uppercase;
-  font-size: 1.35rem;
+  font-size: 1.3rem;
   font-weight: 700;
-  line-height: 1.35;
+  line-height: 1.25;
 }
-.match-teams .vs {
-  display: block;
-  font-size: 0.75rem;
-  letter-spacing: 0.2em;
+.t-name.pending {
   color: var(--chalk-dim);
   font-weight: 400;
+  font-size: 1.02rem;
+  letter-spacing: 0.05em;
 }
+.t-score {
+  font-family: var(--display);
+  font-stretch: condensed;
+  font-variant-numeric: tabular-nums;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+.team-row.loser .t-name,
+.team-row.loser .t-score { color: var(--chalk-dim); }
 .host-mark {
   font-size: 0.68rem;
   letter-spacing: 0.12em;
@@ -340,8 +356,23 @@ button { font: inherit; cursor: pointer; }
   background: rgba(244, 246, 238, 0.09);
   padding: 24px;
 }
-.match.finale .match-teams { font-size: 1.7rem; }
+.match.finale .t-name { font-size: 1.6rem; }
+.match.finale .t-name.pending { font-size: 1.15rem; }
+.match.finale .t-score { font-size: 1.6rem; }
 .match.platz3 { margin-top: 18px; opacity: 0.85; }
+.champion {
+  display: inline-block;
+  margin: 30px 0 0;
+  border: 2px solid var(--women);
+  border-radius: 10px;
+  padding: 14px 24px;
+  font-family: var(--display);
+  font-stretch: condensed;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 1.1rem;
+}
+.champion strong { color: var(--women); font-size: 1.35rem; margin-left: 6px; }
 .connector { display: none; }
 @media (min-width: 860px) {
   .connector { display: block; height: 100%; min-height: 260px; }
@@ -390,7 +421,7 @@ button { font: inherit; cursor: pointer; }
 .games { list-style: none; margin: 0; padding: 0; }
 .game {
   display: grid;
-  grid-template-columns: 70px 1fr auto;
+  grid-template-columns: 70px 1fr auto auto;
   gap: 6px 18px;
   align-items: center;
   padding: 14px 14px 14px 18px;
@@ -432,6 +463,14 @@ button { font: inherit; cursor: pointer; }
   white-space: nowrap;
   vertical-align: 2px;
 }
+.g-score {
+  font-family: var(--display);
+  font-stretch: condensed;
+  font-variant-numeric: tabular-nums;
+  font-size: 1.15rem;
+  font-weight: 700;
+  justify-self: end;
+}
 .g-chip {
   font-family: var(--display);
   font-stretch: condensed;
@@ -449,9 +488,10 @@ button { font: inherit; cursor: pointer; }
 .game.is-final { background: var(--champ-soft); border-radius: 0 8px 8px 0; }
 .schedule-note { margin-top: 26px; font-size: 0.9rem; color: var(--ink-soft); }
 @media (max-width: 620px) {
-  .game { grid-template-columns: 58px 1fr; }
-  .g-chip { grid-column: 2; justify-self: start; }
+  .game { grid-template-columns: 58px 1fr auto; }
+  .g-chip { grid-column: 2 / 4; justify-self: start; }
   .g-time { font-size: 1.1rem; }
+  .g-score { font-size: 1.05rem; }
 }
 
 /* ---------- Play-Ins detail ---------- */
@@ -596,13 +636,15 @@ button { font: inherit; cursor: pointer; }
       </div>
       <div class="bracket">
         <div class="semis">
-          <div class="match">
+          <div class="match" data-game="hf1">
             <div class="match-label"><span>Halbfinale 1</span><span class="match-time">Sa 10:15</span></div>
-            <div class="match-teams">Köln <span class="vs">gegen</span> Tübingen <span class="host-mark">Gastgeber</span></div>
+            <div class="team-row" data-side="home"><span class="t-name">Köln</span><span class="t-score" hidden></span></div>
+            <div class="team-row" data-side="away"><span class="t-name">Tübingen <span class="host-mark">Gastgeber</span></span><span class="t-score" hidden></span></div>
           </div>
-          <div class="match">
+          <div class="match" data-game="hf2">
             <div class="match-label"><span>Halbfinale 2</span><span class="match-time">Sa 11:30</span></div>
-            <div class="match-teams">Frankfurt <span class="vs">gegen</span> Hamburg</div>
+            <div class="team-row" data-side="home"><span class="t-name">Frankfurt</span><span class="t-score" hidden></span></div>
+            <div class="team-row" data-side="away"><span class="t-name">Hamburg</span><span class="t-score" hidden></span></div>
           </div>
         </div>
         <div class="connector" aria-hidden="true">
@@ -611,17 +653,20 @@ button { font: inherit; cursor: pointer; }
           </svg>
         </div>
         <div class="finals">
-          <div class="match finale">
+          <div class="match finale" data-game="finale">
             <div class="match-label"><span>Finale</span><span class="match-time">Sa 18:30</span></div>
-            <div class="match-teams">Gewinner HF1 <span class="vs">gegen</span> Gewinner HF2</div>
+            <div class="team-row" data-side="home"><span class="t-name pending" data-slot>Gewinner HF1</span><span class="t-score" hidden></span></div>
+            <div class="team-row" data-side="away"><span class="t-name pending" data-slot>Gewinner HF2</span><span class="t-score" hidden></span></div>
           </div>
-          <div class="match platz3">
+          <div class="match platz3" data-game="p3">
             <div class="match-label"><span>Spiel um Platz 3</span><span class="match-time">Sa 17:00</span></div>
-            <div class="match-teams">Verlierer HF1 <span class="vs">gegen</span> Verlierer HF2</div>
+            <div class="team-row" data-side="home"><span class="t-name pending" data-slot>Verlierer HF1</span><span class="t-score" hidden></span></div>
+            <div class="team-row" data-side="away"><span class="t-name pending" data-slot>Verlierer HF2</span><span class="t-score" hidden></span></div>
           </div>
         </div>
       </div>
-      <p class="bracket-note">Zwischen den Halbfinals und dem Finale laufen auf demselben Feld die Play-Ins – wer den ganzen Tag bleibt, sieht alle drei Wettbewerbe.</p>
+      <p class="champion" id="champion" hidden>Deutscher Meister 2026:<strong></strong></p>
+      <p class="bracket-note">Sobald ein Halbfinale entschieden ist, rücken Sieger und Verlierer hier automatisch ins Finale bzw. ins Spiel um Platz 3 nach. Zwischen den Halbfinals und dem Finale laufen auf demselben Feld die Play-Ins – wer den ganzen Tag bleibt, sieht alle drei Wettbewerbe.</p>
     </div>
   </section>
 
@@ -630,7 +675,7 @@ button { font: inherit; cursor: pointer; }
       <div class="section-head">
         <p class="eyebrow" style="color: var(--champ-ink);">Spielplan</p>
         <h2>Alle Spiele im Überblick</h2>
-        <p class="lede">Nach Wettbewerb filtern – die Farbe am linken Rand zeigt, zu welchem Wettbewerb ein Spiel gehört.</p>
+        <p class="lede">Nach Wettbewerb filtern – die Farbe am linken Rand zeigt, zu welchem Wettbewerb ein Spiel gehört. Ergebnisse erscheinen hier automatisch, sobald sie eingetragen sind.</p>
       </div>
       <div class="filters" role="group" aria-label="Spielplan nach Wettbewerb filtern">
         <button type="button" class="f-all" data-filter="all" aria-pressed="true">Alle Spiele</button>
@@ -642,68 +687,76 @@ button { font: inherit; cursor: pointer; }
       <div class="day">
         <h3 class="day-title">Samstag, 25. Juli 2026</h3>
         <ul class="games">
-          <li class="game" data-event="hpi">
+          <li class="game" data-event="hpi" data-game="hpi1">
             <span class="g-time">09:00</span>
             <div class="g-main">
               <span class="g-name">Herren Play-Ins · Spiel 1</span>
               <span class="g-match">Stuttgart – Freiburg</span>
             </div>
+            <span class="g-score" hidden></span>
             <span class="g-chip c-hpi">Herren Play-Ins</span>
           </li>
-          <li class="game" data-event="meist">
+          <li class="game" data-event="meist" data-game="hf1">
             <span class="g-time">10:15</span>
             <div class="g-main">
               <span class="g-name">Halbfinale 1</span>
               <span class="g-match">Köln – Tübingen<span class="host-chip">Gastgeber</span></span>
             </div>
+            <span class="g-score" hidden></span>
             <span class="g-chip c-meist">Meisterschaft</span>
           </li>
-          <li class="game" data-event="meist">
+          <li class="game" data-event="meist" data-game="hf2">
             <span class="g-time">11:30</span>
             <div class="g-main">
               <span class="g-name">Halbfinale 2</span>
               <span class="g-match">Frankfurt – Hamburg</span>
             </div>
+            <span class="g-score" hidden></span>
             <span class="g-chip c-meist">Meisterschaft</span>
           </li>
-          <li class="game" data-event="dpi">
+          <li class="game" data-event="dpi" data-game="dpi1">
             <span class="g-time">12:45</span>
             <div class="g-main">
               <span class="g-name">Damen Play-Ins · Spiel 1</span>
               <span class="g-match">München – Heidelberg</span>
             </div>
+            <span class="g-score" hidden></span>
             <span class="g-chip c-dpi">Damen Play-Ins</span>
           </li>
-          <li class="game" data-event="hpi">
+          <li class="game" data-event="hpi" data-game="hpi2">
             <span class="g-time">14:00</span>
             <div class="g-main">
               <span class="g-name">Herren Play-Ins · Spiel 2</span>
               <span class="g-match">München – Stuttgart</span>
             </div>
+            <span class="g-score" hidden></span>
             <span class="g-chip c-hpi">Herren Play-Ins</span>
           </li>
-          <li class="game" data-event="dpi">
+          <li class="game" data-event="dpi" data-game="dpi2">
             <span class="g-time">15:15</span>
             <div class="g-main">
               <span class="g-name">Damen Play-Ins · Spiel 2</span>
               <span class="g-match">Karlsruhe – Stuttgart</span>
             </div>
+            <span class="g-score" hidden></span>
             <span class="g-chip c-dpi">Damen Play-Ins</span>
           </li>
-          <li class="game" data-event="meist">
+          <li class="game" data-event="meist" data-game="p3" data-dynamic>
             <span class="g-time">17:00</span>
             <div class="g-main">
               <span class="g-name">Spiel um Platz 3</span>
               <span class="g-match">Verlierer HF1 – Verlierer HF2</span>
             </div>
+            <span class="g-score" hidden></span>
             <span class="g-chip c-meist">Meisterschaft</span>
           </li>
-          <li class="game is-final" data-event="meist">
+          <li class="game is-final" data-event="meist" data-game="finale" data-dynamic>
             <span class="g-time">18:30</span>
             <div class="g-main">
               <span class="g-name">Finale um die Deutsche Meisterschaft</span>
               <span class="g-match">Gewinner HF1 – Gewinner HF2</span>
             </div>
+            <span class="g-score" hidden></span>
             <span class="g-chip c-meist">Meisterschaft</span>
           </li>
         </ul>
@@ -712,36 +765,40 @@ button { font: inherit; cursor: pointer; }
       <div class="day">
         <h3 class="day-title">Sonntag, 26. Juli 2026</h3>
         <ul class="games">
-          <li class="game" data-event="dpi">
+          <li class="game" data-event="dpi" data-game="dpi3" data-dynamic>
             <span class="g-time">10:15</span>
             <div class="g-main">
               <span class="g-name">Damen Play-Ins · Spiel 3</span>
               <span class="g-match">Sieger Spiel 1 – Sieger Spiel 2</span>
             </div>
+            <span class="g-score" hidden></span>
             <span class="g-chip c-dpi">Damen Play-Ins</span>
           </li>
-          <li class="game" data-event="dpi">
+          <li class="game" data-event="dpi" data-game="dpi4" data-dynamic>
             <span class="g-time">11:30</span>
             <div class="g-main">
               <span class="g-name">Damen Play-Ins · Spiel 4</span>
               <span class="g-match">Verlierer Spiel 1 – Verlierer Spiel 2</span>
             </div>
+            <span class="g-score" hidden></span>
             <span class="g-chip c-dpi">Damen Play-Ins</span>
           </li>
-          <li class="game" data-event="hpi">
+          <li class="game" data-event="hpi" data-game="hpi3">
             <span class="g-time">12:45</span>
             <div class="g-main">
               <span class="g-name">Herren Play-Ins · Spiel 3</span>
               <span class="g-match">München – Freiburg</span>
             </div>
+            <span class="g-score" hidden></span>
             <span class="g-chip c-hpi">Herren Play-Ins</span>
           </li>
-          <li class="game" data-event="dpi">
+          <li class="game" data-event="dpi" data-game="dpi5" data-dynamic>
             <span class="g-time">14:00</span>
             <div class="g-main">
               <span class="g-name">Damen Play-Ins · Spiel 5</span>
               <span class="g-match">Verlierer Spiel 3 – Gewinner Spiel 4</span>
             </div>
+            <span class="g-score" hidden></span>
             <span class="g-chip c-dpi">Damen Play-Ins</span>
           </li>
         </ul>
@@ -790,6 +847,7 @@ button { font: inherit; cursor: pointer; }
   </div>
 </footer>
 
+<script src="games.js"></script>
 <script>
 (function () {
   // Schedule filter
@@ -827,6 +885,68 @@ button { font: inherit; cursor: pointer; }
       ? 'Morgen: erstes Faceoff um 09:00 Uhr'
       : 'Noch ' + days_ + ' Tage bis zum ersten Faceoff';
   }
+
+  // Live scores: fetched from the API, winners advance automatically.
+  function applyState(state) {
+    var scores = (state && state.scores) || {};
+
+    document.querySelectorAll('.match[data-game]').forEach(function (card) {
+      var game = DLM.byId[card.dataset.game];
+      if (!game) { return; }
+      var s = DLM.score(scores, game.id);
+      var out = DLM.outcome(scores, game.id);
+      ['home', 'away'].forEach(function (side) {
+        var row = card.querySelector('.team-row[data-side="' + side + '"]');
+        if (!row) { return; }
+        var nameEl = row.querySelector('.t-name');
+        if (nameEl.hasAttribute('data-slot')) {
+          var t = DLM.teamName(scores, game[side]);
+          nameEl.textContent = t.name;
+          nameEl.classList.toggle('pending', !t.resolved);
+        }
+        var scoreEl = row.querySelector('.t-score');
+        scoreEl.hidden = !s;
+        scoreEl.textContent = s ? String(s[side]) : '';
+        row.classList.toggle('loser', !!out && out !== side);
+      });
+    });
+
+    var champEl = document.getElementById('champion');
+    if (champEl) {
+      var finaleOut = DLM.outcome(scores, 'finale');
+      var champ = finaleOut ? DLM.teamName(scores, DLM.byId.finale[finaleOut]) : null;
+      champEl.hidden = !(champ && champ.resolved);
+      champEl.querySelector('strong').textContent = champ && champ.resolved ? champ.name : '';
+    }
+
+    document.querySelectorAll('.game[data-game]').forEach(function (row) {
+      var game = DLM.byId[row.dataset.game];
+      if (!game) { return; }
+      var s = DLM.score(scores, game.id);
+      var scoreEl = row.querySelector('.g-score');
+      if (scoreEl) {
+        scoreEl.hidden = !s;
+        scoreEl.textContent = s ? s.home + ':' + s.away : '';
+      }
+      if (row.hasAttribute('data-dynamic')) {
+        var h = DLM.teamName(scores, game.home);
+        var a = DLM.teamName(scores, game.away);
+        row.querySelector('.g-match').textContent = h.name + ' – ' + a.name;
+      }
+    });
+  }
+
+  function refreshScores() {
+    fetch('api/scores', { cache: 'no-store' })
+      .then(function (r) { if (!r.ok) { throw new Error('HTTP ' + r.status); } return r.json(); })
+      .then(applyState)
+      .catch(function () { /* API nicht erreichbar – statischer Spielplan bleibt stehen */ });
+  }
+  refreshScores();
+  setInterval(refreshScores, 45000);
+  document.addEventListener('visibilitychange', function () {
+    if (!document.hidden) { refreshScores(); }
+  });
 })();
 </script>
 

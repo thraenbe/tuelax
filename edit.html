@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Ergebnisdienst · Deutsche Lacrosse-Meisterschaft 2026</title>
+<style>
+:root {
+  --ground: #F3F4EE;
+  --surface: #FFFFFF;
+  --ink: #17251D;
+  --ink-soft: #52604F;
+  --line: #DCE0D4;
+  --pitch: #0E3D2A;
+  --chalk: #F4F6EE;
+  --chalk-dim: rgba(244, 246, 238, 0.55);
+  --champ: #C1401F;
+  --champ-ink: #A33518;
+  --champ-soft: #F6E3DC;
+  --men: #2F7D4E;
+  --men-ink: #256540;
+  --men-soft: #E1EEE4;
+  --women: #C99312;
+  --women-ink: #8F6A0C;
+  --women-soft: #F5ECD3;
+  --ok: #2F7D4E;
+  --display: "Bahnschrift", "Avenir Next Condensed", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  --body: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ground: #0C1712;
+    --surface: #132219;
+    --ink: #EBF1E8;
+    --ink-soft: #A2B2A3;
+    --line: #24352A;
+    --champ: #E2603A;
+    --champ-ink: #F0906C;
+    --champ-soft: rgba(226, 96, 58, 0.16);
+    --men: #4CAF6E;
+    --men-ink: #7CC996;
+    --men-soft: rgba(76, 175, 110, 0.16);
+    --women: #E0B33A;
+    --women-ink: #E8C566;
+    --women-soft: rgba(224, 179, 58, 0.14);
+    --ok: #4CAF6E;
+  }
+}
+:root[data-theme="light"] {
+  --ground: #F3F4EE;
+  --surface: #FFFFFF;
+  --ink: #17251D;
+  --ink-soft: #52604F;
+  --line: #DCE0D4;
+  --champ: #C1401F;
+  --champ-ink: #A33518;
+  --champ-soft: #F6E3DC;
+  --men: #2F7D4E;
+  --men-ink: #256540;
+  --men-soft: #E1EEE4;
+  --women: #C99312;
+  --women-ink: #8F6A0C;
+  --women-soft: #F5ECD3;
+  --ok: #2F7D4E;
+}
+:root[data-theme="dark"] {
+  --ground: #0C1712;
+  --surface: #132219;
+  --ink: #EBF1E8;
+  --ink-soft: #A2B2A3;
+  --line: #24352A;
+  --champ: #E2603A;
+  --champ-ink: #F0906C;
+  --champ-soft: rgba(226, 96, 58, 0.16);
+  --men: #4CAF6E;
+  --men-ink: #7CC996;
+  --men-soft: rgba(76, 175, 110, 0.16);
+  --women: #E0B33A;
+  --women-ink: #E8C566;
+  --women-soft: rgba(224, 179, 58, 0.14);
+  --ok: #4CAF6E;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--body);
+  line-height: 1.5;
+}
+h1, h2 {
+  font-family: var(--display);
+  font-stretch: condensed;
+  text-transform: uppercase;
+  line-height: 1.1;
+  margin: 0;
+}
+button { font: inherit; cursor: pointer; }
+:focus-visible { outline: 3px solid var(--champ); outline-offset: 2px; border-radius: 2px; }
+
+.topbar {
+  background: var(--pitch);
+  color: var(--chalk);
+  padding: 26px 20px;
+}
+.topbar-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.eyebrow {
+  font-family: var(--display);
+  font-stretch: condensed;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--women);
+  margin: 0 0 4px;
+}
+.topbar h1 { font-size: 1.7rem; }
+.topbar a { color: var(--chalk-dim); font-size: 0.9rem; }
+.mode-badge {
+  font-family: var(--display);
+  font-stretch: condensed;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.78rem;
+  font-weight: 700;
+  border: 1px solid var(--women);
+  color: var(--women);
+  border-radius: 999px;
+  padding: 4px 12px;
+}
+
+.wrap { max-width: 720px; margin: 0 auto; padding: 26px 20px 70px; }
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 18px 20px;
+}
+.auth { display: grid; gap: 8px; margin-bottom: 18px; }
+.auth label {
+  font-family: var(--display);
+  font-stretch: condensed;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+}
+.auth input {
+  font: inherit;
+  padding: 9px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--ground);
+  color: var(--ink);
+  max-width: 320px;
+}
+.auth .hint { margin: 0; font-size: 0.85rem; color: var(--ink-soft); }
+.auth .hint a { color: inherit; }
+
+.banner {
+  border: 1px solid var(--women);
+  background: var(--women-soft);
+  color: var(--ink);
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 0.92rem;
+  margin: 0 0 18px;
+}
+
+.day-title {
+  font-size: 1.25rem;
+  margin: 28px 0 12px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--ink);
+}
+.game-card { margin-bottom: 12px; display: grid; gap: 12px; }
+.gc-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+}
+.gc-title {
+  font-family: var(--display);
+  font-stretch: condensed;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 700;
+  font-size: 1.02rem;
+}
+.gc-time { color: var(--ink-soft); font-size: 0.88rem; font-variant-numeric: tabular-nums; }
+.chip {
+  font-family: var(--display);
+  font-stretch: condensed;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.chip.c-meist { background: var(--champ-soft); color: var(--champ-ink); }
+.chip.c-hpi { background: var(--men-soft); color: var(--men-ink); }
+.chip.c-dpi { background: var(--women-soft); color: var(--women-ink); }
+
+.gc-team {
+  display: grid;
+  grid-template-columns: 1fr 88px;
+  align-items: center;
+  gap: 12px;
+}
+.gc-team .t-name { font-weight: 600; }
+.gc-team .t-name.pending { color: var(--ink-soft); font-weight: 400; }
+.gc-team input {
+  font-family: var(--display);
+  font-stretch: condensed;
+  font-variant-numeric: tabular-nums;
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-align: center;
+  padding: 7px 8px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--ground);
+  color: var(--ink);
+  width: 88px;
+}
+.gc-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.btn-save {
+  font-family: var(--display);
+  font-stretch: condensed;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  font-weight: 700;
+  font-size: 0.9rem;
+  background: var(--champ);
+  color: #FFF6F2;
+  border: none;
+  border-radius: 999px;
+  padding: 8px 20px;
+}
+.btn-clear {
+  font-family: var(--display);
+  font-stretch: condensed;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  font-weight: 700;
+  font-size: 0.9rem;
+  background: transparent;
+  color: var(--ink-soft);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 8px 16px;
+}
+.gc-status { font-size: 0.86rem; color: var(--ink-soft); }
+.gc-status.ok { color: var(--ok); }
+.gc-status.err { color: var(--champ-ink); }
+.tie-warn { font-size: 0.85rem; color: var(--champ-ink); margin: 0; }
+.foot-note { margin-top: 34px; font-size: 0.85rem; color: var(--ink-soft); }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div>
+      <p class="eyebrow">TSG Tübingen · Ergebnisdienst</p>
+      <h1>Ergebnisse eintragen</h1>
+    </div>
+    <span class="mode-badge" id="mode-badge" hidden>Demo-Modus</span>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="card auth">
+    <label for="pw">Editor-Passwort</label>
+    <input type="password" id="pw" autocomplete="current-password" placeholder="Passwort">
+    <p class="hint">Wird bei jedem Speichern mitgesendet und nach dem ersten erfolgreichen Speichern in diesem Browser gemerkt. <a href="/">Zur Turnierseite</a></p>
+  </section>
+
+  <p class="banner" id="banner" hidden></p>
+
+  <div id="days" aria-live="polite"></div>
+
+  <p class="foot-note">Sieger und Verlierer werden automatisch in die nächste Runde übernommen: Die Gewinner der Halbfinals stehen im Finale, die Verlierer im Spiel um Platz 3 – bei den Damen Play-Ins füllen die Ergebnisse von Spiel 1 bis 4 die Paarungen der Spiele 3, 4 und 5. Ein Ergebnis leeren macht die Übernahme wieder rückgängig.</p>
+</main>
+
+<script src="games.js"></script>
+<script>
+(function () {
+  var DEMO_KEY = 'dlm2026-demo-state';
+  var PW_KEY = 'dlm2026-editor-pw';
+  var state = { scores: {} };
+  var demo = false;
+  var flash = {}; // gameId -> one-shot status message shown on next render
+
+  var daysEl = document.getElementById('days');
+  var banner = document.getElementById('banner');
+  var badge = document.getElementById('mode-badge');
+  var pwInput = document.getElementById('pw');
+  try { pwInput.value = localStorage.getItem(PW_KEY) || ''; } catch (e) {}
+
+  function setBanner(msg) {
+    banner.textContent = msg || '';
+    banner.hidden = !msg;
+  }
+
+  function scoresObj() { return state.scores || {}; }
+
+  function load() {
+    fetch('api/scores', { cache: 'no-store' })
+      .then(function (r) { if (!r.ok) { throw new Error('HTTP ' + r.status); } return r.json(); })
+      .then(function (s) {
+        state = s && typeof s === 'object' ? s : { scores: {} };
+        if (s && s.configured === false) {
+          setBanner('Der Speicher ist noch nicht eingerichtet (Upstash-Redis-Integration im Vercel-Projekt hinzufügen). Anzeigen funktioniert, Speichern noch nicht.');
+        }
+        render();
+      })
+      .catch(function () {
+        demo = true;
+        badge.hidden = false;
+        try { state = JSON.parse(localStorage.getItem(DEMO_KEY)) || { scores: {} }; } catch (e) { state = { scores: {} }; }
+        setBanner('Keine Verbindung zur Ergebnis-API. Demo-Modus: Änderungen werden nur in diesem Browser gespeichert.');
+        render();
+      });
+  }
+
+  function save(id, home, away) {
+    if (demo) {
+      if (home === null) { delete state.scores[id]; } else { state.scores[id] = { home: home, away: away }; }
+      try { localStorage.setItem(DEMO_KEY, JSON.stringify(state)); } catch (e) {}
+      flash[id] = { text: home === null ? 'Geleert (Demo)' : 'Gespeichert (Demo)', ok: true };
+      render();
+      return;
+    }
+    var pw = pwInput.value;
+    if (!pw) {
+      flash[id] = { text: 'Bitte zuerst das Editor-Passwort eingeben.', ok: false };
+      render();
+      pwInput.focus();
+      return;
+    }
+    fetch('api/scores', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + pw },
+      body: JSON.stringify({ id: id, home: home, away: away }),
+    })
+      .then(function (r) {
+        return r.json().catch(function () { return {}; }).then(function (data) {
+          if (!r.ok) { throw new Error(data.error || 'Fehler ' + r.status); }
+          return data;
+        });
+      })
+      .then(function (s) {
+        try { localStorage.setItem(PW_KEY, pw); } catch (e) {}
+        state = s;
+        flash[id] = { text: home === null ? 'Geleert' : 'Gespeichert', ok: true };
+        render();
+      })
+      .catch(function (err) {
+        flash[id] = { text: err.message, ok: false };
+        render();
+      });
+  }
+
+  function el(tag, className, text) {
+    var node = document.createElement(tag);
+    if (className) { node.className = className; }
+    if (text !== undefined) { node.textContent = text; }
+    return node;
+  }
+
+  var COMP_LABEL = { meist: 'Meisterschaft', hpi: 'Herren Play-Ins', dpi: 'Damen Play-Ins' };
+
+  function teamLine(game, side, value) {
+    var row = el('div', 'gc-team');
+    var t = DLM.teamName(scoresObj(), game[side]);
+    var name = el('span', 't-name' + (t.resolved ? '' : ' pending'), t.name);
+    var input = document.createElement('input');
+    input.type = 'number';
+    input.min = '0';
+    input.max = '99';
+    input.step = '1';
+    input.inputMode = 'numeric';
+    input.id = game.id + '-' + side;
+    input.setAttribute('aria-label', game.name + ': Tore ' + t.name);
+    if (value !== null) { input.value = String(value); }
+    row.appendChild(name);
+    row.appendChild(input);
+    return row;
+  }
+
+  function gameCard(game) {
+    var s = DLM.score(scoresObj(), game.id);
+    var card = el('article', 'card game-card');
+
+    var head = el('div', 'gc-head');
+    var left = el('div');
+    left.appendChild(el('span', 'gc-title', game.name));
+    left.appendChild(el('span', 'gc-time', ' · ' + game.day + ' ' + game.time));
+    head.appendChild(left);
+    head.appendChild(el('span', 'chip c-' + game.comp, COMP_LABEL[game.comp]));
+    card.appendChild(head);
+
+    card.appendChild(teamLine(game, 'home', s ? s.home : null));
+    card.appendChild(teamLine(game, 'away', s ? s.away : null));
+
+    if (s && s.home === s.away && DLM.REFERENCED.has(game.id)) {
+      card.appendChild(el('p', 'tie-warn', 'Unentschieden: Sieger und Verlierer können nicht in die nächste Runde übernommen werden.'));
+    }
+
+    var actions = el('div', 'gc-actions');
+    var saveBtn = el('button', 'btn-save', 'Speichern');
+    saveBtn.type = 'button';
+    saveBtn.addEventListener('click', function () {
+      var h = card.querySelector('#' + game.id + '-home').value.trim();
+      var a = card.querySelector('#' + game.id + '-away').value.trim();
+      if (h === '' || a === '') {
+        flash[game.id] = { text: 'Beide Torzahlen eintragen.', ok: false };
+        render();
+        return;
+      }
+      var hn = Number(h), an = Number(a);
+      if (!Number.isInteger(hn) || !Number.isInteger(an) || hn < 0 || an < 0 || hn > 99 || an > 99) {
+        flash[game.id] = { text: 'Nur ganze Zahlen von 0 bis 99.', ok: false };
+        render();
+        return;
+      }
+      save(game.id, hn, an);
+    });
+    actions.appendChild(saveBtn);
+
+    if (s) {
+      var clearBtn = el('button', 'btn-clear', 'Ergebnis leeren');
+      clearBtn.type = 'button';
+      clearBtn.addEventListener('click', function () {
+        if (window.confirm(game.name + ': Ergebnis wirklich leeren?')) {
+          save(game.id, null, null);
+        }
+      });
+      actions.appendChild(clearBtn);
+    }
+
+    var f = flash[game.id];
+    if (f) {
+      actions.appendChild(el('span', 'gc-status ' + (f.ok ? 'ok' : 'err'), f.text));
+      delete flash[game.id];
+    }
+    card.appendChild(actions);
+    return card;
+  }
+
+  function render() {
+    daysEl.innerHTML = '';
+    [{ key: 'Sa', title: 'Samstag, 25. Juli 2026' }, { key: 'So', title: 'Sonntag, 26. Juli 2026' }].forEach(function (d) {
+      daysEl.appendChild(el('h2', 'day-title', d.title));
+      DLM.GAMES.filter(function (g) { return g.day === d.key; }).forEach(function (g) {
+        daysEl.appendChild(gameCard(g));
+      });
+    });
+  }
+
+  load();
+})();
+</script>
+
+</body>
+</html>

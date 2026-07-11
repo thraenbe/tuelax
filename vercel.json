@@ -1,0 +1,10 @@
+{
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "edit.tuelax.de" }],
+      "destination": "/edit.html"
+    }
+  ]
+}
