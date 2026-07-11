@@ -1,0 +1,834 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deutsche Lacrosse-Meisterschaft 2026 · TSG Tübingen</title>
+<meta name="description" content="Deutsche Lacrosse-Meisterschaft 2026 in Tübingen, 25.–26. Juli: Final Four der Herren, Herren Play-Ins und Damen Play-Ins. Ausrichter: TSG Tübingen.">
+<style>
+/* ---------- Tokens ---------- */
+:root {
+  --ground: #F3F4EE;
+  --surface: #FFFFFF;
+  --ink: #17251D;
+  --ink-soft: #52604F;
+  --line: #DCE0D4;
+
+  --pitch: #0E3D2A;
+  --pitch-deep: #0A2F20;
+  --chalk: #F4F6EE;
+  --chalk-dim: rgba(244, 246, 238, 0.55);
+  --chalk-line: rgba(244, 246, 238, 0.16);
+
+  --champ: #C1401F;
+  --champ-ink: #A33518;
+  --champ-soft: #F6E3DC;
+  --men: #2F7D4E;
+  --men-ink: #256540;
+  --men-soft: #E1EEE4;
+  --women: #C99312;
+  --women-ink: #8F6A0C;
+  --women-soft: #F5ECD3;
+
+  --display: "Bahnschrift", "Avenir Next Condensed", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  --body: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ground: #0C1712;
+    --surface: #132219;
+    --ink: #EBF1E8;
+    --ink-soft: #A2B2A3;
+    --line: #24352A;
+    --champ: #E2603A;
+    --champ-ink: #F0906C;
+    --champ-soft: rgba(226, 96, 58, 0.16);
+    --men: #4CAF6E;
+    --men-ink: #7CC996;
+    --men-soft: rgba(76, 175, 110, 0.16);
+    --women: #E0B33A;
+    --women-ink: #E8C566;
+    --women-soft: rgba(224, 179, 58, 0.14);
+  }
+}
+:root[data-theme="light"] {
+  --ground: #F3F4EE;
+  --surface: #FFFFFF;
+  --ink: #17251D;
+  --ink-soft: #52604F;
+  --line: #DCE0D4;
+  --champ: #C1401F;
+  --champ-ink: #A33518;
+  --champ-soft: #F6E3DC;
+  --men: #2F7D4E;
+  --men-ink: #256540;
+  --men-soft: #E1EEE4;
+  --women: #C99312;
+  --women-ink: #8F6A0C;
+  --women-soft: #F5ECD3;
+}
+:root[data-theme="dark"] {
+  --ground: #0C1712;
+  --surface: #132219;
+  --ink: #EBF1E8;
+  --ink-soft: #A2B2A3;
+  --line: #24352A;
+  --champ: #E2603A;
+  --champ-ink: #F0906C;
+  --champ-soft: rgba(226, 96, 58, 0.16);
+  --men: #4CAF6E;
+  --men-ink: #7CC996;
+  --men-soft: rgba(76, 175, 110, 0.16);
+  --women: #E0B33A;
+  --women-ink: #E8C566;
+  --women-soft: rgba(224, 179, 58, 0.14);
+}
+
+/* ---------- Base ---------- */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+h1, h2, h3 {
+  font-family: var(--display);
+  font-stretch: condensed;
+  text-transform: uppercase;
+  line-height: 1.05;
+  text-wrap: balance;
+  margin: 0;
+}
+p { margin: 0; }
+a { color: inherit; }
+button { font: inherit; cursor: pointer; }
+:focus-visible {
+  outline: 3px solid var(--champ);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+.wrap { max-width: 1060px; margin: 0 auto; }
+.section { padding: 72px 22px; }
+.eyebrow {
+  font-family: var(--display);
+  font-stretch: condensed;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+.section-head { margin-bottom: 34px; }
+.section-head .eyebrow { margin-bottom: 8px; }
+.section-head h2 { font-size: clamp(1.9rem, 4.5vw, 2.8rem); }
+.section-head .lede {
+  margin-top: 12px;
+  max-width: 62ch;
+  color: var(--ink-soft);
+}
+
+/* ---------- Hero (deliberately single-world: the pitch) ---------- */
+.hero {
+  position: relative;
+  background: var(--pitch);
+  color: var(--chalk);
+  overflow: hidden;
+}
+.hero .field {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.hero-inner {
+  position: relative;
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 92px 22px 72px;
+}
+.hero .eyebrow { color: var(--women); }
+.hero h1 {
+  font-size: clamp(2.7rem, 8.5vw, 5.4rem);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  margin: 14px 0 18px;
+}
+.hero-sub {
+  max-width: 56ch;
+  font-size: 1.08rem;
+  color: var(--chalk-dim);
+}
+.hero-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 30px;
+}
+.fact {
+  font-family: var(--display);
+  font-stretch: condensed;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.95rem;
+  padding: 8px 14px;
+  border: 1px solid rgba(244, 246, 238, 0.35);
+  border-radius: 999px;
+}
+.fact.fact-live { border-color: var(--women); color: var(--women); }
+.hero-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 44px;
+  padding-top: 20px;
+  border-top: 1px solid var(--chalk-line);
+  font-size: 0.92rem;
+  color: var(--chalk-dim);
+}
+.legend-item { display: inline-flex; align-items: center; gap: 8px; }
+.dot { width: 11px; height: 11px; border-radius: 50%; flex: none; }
+.dot-meist { background: #E2603A; }
+.dot-hpi { background: #4CAF6E; }
+.dot-dpi { background: #E0B33A; }
+@media (prefers-reduced-motion: no-preference) {
+  .hero-inner > * { animation: rise 0.7s ease-out backwards; }
+  .hero-inner > *:nth-child(2) { animation-delay: 0.08s; }
+  .hero-inner > *:nth-child(3) { animation-delay: 0.16s; }
+  .hero-inner > *:nth-child(4) { animation-delay: 0.24s; }
+  .hero-inner > *:nth-child(5) { animation-delay: 0.32s; }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: none; }
+  }
+}
+
+/* ---------- Three competitions ---------- */
+.events { display: grid; gap: 16px; }
+.event-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-top: 4px solid;
+  border-radius: 10px;
+  padding: 26px 26px 24px;
+}
+.event-card.is-meist { border-top-color: var(--champ); }
+.event-card.is-hpi { border-top-color: var(--men); }
+.event-card.is-dpi { border-top-color: var(--women); }
+.event-tag {
+  display: inline-block;
+  font-family: var(--display);
+  font-stretch: condensed;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+  margin-bottom: 14px;
+}
+.is-meist .event-tag { background: var(--champ-soft); color: var(--champ-ink); }
+.is-hpi .event-tag { background: var(--men-soft); color: var(--men-ink); }
+.is-dpi .event-tag { background: var(--women-soft); color: var(--women-ink); }
+.event-card h3 { font-size: 1.55rem; margin-bottom: 10px; }
+.event-card p { color: var(--ink-soft); max-width: 70ch; }
+.event-teams {
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.event-teams li {
+  font-family: var(--display);
+  font-stretch: condensed;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.88rem;
+  padding: 5px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+}
+.event-teams li.host { border-color: var(--champ); color: var(--champ-ink); }
+.event-grid-2 { display: grid; gap: 16px; }
+@media (min-width: 720px) {
+  .event-grid-2 { grid-template-columns: 1fr 1fr; }
+}
+.event-link {
+  display: inline-block;
+  margin-top: 16px;
+  font-family: var(--display);
+  font-stretch: condensed;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--champ-ink);
+  text-decoration: none;
+  border-bottom: 2px solid var(--champ);
+  padding-bottom: 2px;
+}
+
+/* ---------- Bracket ---------- */
+.bracket-section {
+  background: var(--pitch);
+  color: var(--chalk);
+}
+.bracket-section .section-head .eyebrow { color: var(--women); }
+.bracket-section .section-head .lede { color: var(--chalk-dim); }
+.bracket {
+  display: grid;
+  gap: 18px;
+}
+@media (min-width: 860px) {
+  .bracket {
+    grid-template-columns: 1fr 70px 1fr;
+    align-items: center;
+  }
+}
+.semis { display: grid; gap: 26px; }
+.match {
+  border: 1px solid rgba(244, 246, 238, 0.3);
+  border-radius: 10px;
+  padding: 18px 20px;
+  background: rgba(244, 246, 238, 0.05);
+}
+.match-label {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-family: var(--display);
+  font-stretch: condensed;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.8rem;
+  color: var(--chalk-dim);
+  margin-bottom: 12px;
+}
+.match-time { color: var(--women); font-weight: 700; }
+.match-teams {
+  font-family: var(--display);
+  font-stretch: condensed;
+  text-transform: uppercase;
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+.match-teams .vs {
+  display: block;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  color: var(--chalk-dim);
+  font-weight: 400;
+}
+.host-mark {
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  vertical-align: 3px;
+  color: var(--women);
+  white-space: nowrap;
+}
+.match.finale {
+  border-width: 2px;
+  border-color: var(--chalk);
+  background: rgba(244, 246, 238, 0.09);
+  padding: 24px;
+}
+.match.finale .match-teams { font-size: 1.7rem; }
+.match.platz3 { margin-top: 18px; opacity: 0.85; }
+.connector { display: none; }
+@media (min-width: 860px) {
+  .connector { display: block; height: 100%; min-height: 260px; }
+  .connector svg { width: 100%; height: 100%; }
+}
+.bracket-note {
+  margin-top: 28px;
+  font-size: 0.92rem;
+  color: var(--chalk-dim);
+  max-width: 70ch;
+}
+
+/* ---------- Schedule ---------- */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 30px;
+}
+.filters button {
+  font-family: var(--display);
+  font-stretch: condensed;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink-soft);
+}
+.filters button[aria-pressed="true"] { color: var(--chalk); border-color: transparent; }
+.filters button.f-all[aria-pressed="true"] { background: var(--ink); color: var(--ground); }
+.filters button.f-meist[aria-pressed="true"] { background: var(--champ); }
+.filters button.f-hpi[aria-pressed="true"] { background: var(--men); }
+.filters button.f-dpi[aria-pressed="true"] { background: var(--women); color: #241B04; }
+.day { margin-bottom: 40px; }
+.day:last-of-type { margin-bottom: 0; }
+.day-title {
+  font-size: 1.4rem;
+  padding-bottom: 10px;
+  margin-bottom: 6px;
+  border-bottom: 2px solid var(--ink);
+}
+.games { list-style: none; margin: 0; padding: 0; }
+.game {
+  display: grid;
+  grid-template-columns: 70px 1fr auto;
+  gap: 6px 18px;
+  align-items: center;
+  padding: 14px 14px 14px 18px;
+  border-bottom: 1px solid var(--line);
+  border-left: 4px solid transparent;
+}
+.game[data-event="meist"] { border-left-color: var(--champ); }
+.game[data-event="hpi"] { border-left-color: var(--men); }
+.game[data-event="dpi"] { border-left-color: var(--women); }
+.g-time {
+  font-family: var(--display);
+  font-stretch: condensed;
+  font-variant-numeric: tabular-nums;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+.g-main { min-width: 0; }
+.g-name {
+  display: block;
+  font-family: var(--display);
+  font-stretch: condensed;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+}
+.g-match { font-weight: 600; }
+.g-match .host-chip {
+  font-family: var(--display);
+  font-stretch: condensed;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.7rem;
+  color: var(--champ-ink);
+  border: 1px solid var(--champ);
+  border-radius: 999px;
+  padding: 1px 8px;
+  margin-left: 6px;
+  white-space: nowrap;
+  vertical-align: 2px;
+}
+.g-chip {
+  font-family: var(--display);
+  font-stretch: condensed;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 4px 11px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.g-chip.c-meist { background: var(--champ-soft); color: var(--champ-ink); }
+.g-chip.c-hpi { background: var(--men-soft); color: var(--men-ink); }
+.g-chip.c-dpi { background: var(--women-soft); color: var(--women-ink); }
+.game.is-final { background: var(--champ-soft); border-radius: 0 8px 8px 0; }
+.schedule-note { margin-top: 26px; font-size: 0.9rem; color: var(--ink-soft); }
+@media (max-width: 620px) {
+  .game { grid-template-columns: 58px 1fr; }
+  .g-chip { grid-column: 2; justify-self: start; }
+  .g-time { font-size: 1.1rem; }
+}
+
+/* ---------- Play-Ins detail ---------- */
+.playins-grid { display: grid; gap: 16px; }
+@media (min-width: 780px) {
+  .playins-grid { grid-template-columns: 1fr 1fr; }
+}
+.playin-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 26px;
+}
+.playin-card h3 { font-size: 1.4rem; margin-bottom: 10px; }
+.playin-card > p { color: var(--ink-soft); }
+.mini-games { list-style: none; margin: 18px 0 0; padding: 0; }
+.mini-games li {
+  display: flex;
+  gap: 14px;
+  align-items: baseline;
+  padding: 9px 0;
+  border-bottom: 1px dashed var(--line);
+}
+.mini-games li:last-child { border-bottom: none; }
+.mg-when {
+  font-family: var(--display);
+  font-stretch: condensed;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  flex: none;
+  width: 84px;
+}
+.mg-match { font-size: 0.97rem; }
+.mg-match small { display: block; color: var(--ink-soft); }
+
+/* ---------- Footer ---------- */
+.site-foot {
+  background: var(--pitch-deep);
+  color: var(--chalk-dim);
+  padding: 44px 22px;
+  font-size: 0.92rem;
+}
+.site-foot .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 40px;
+  justify-content: space-between;
+}
+.site-foot strong { color: var(--chalk); font-weight: 600; }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <svg class="field" viewBox="0 0 1200 560" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+    <g stroke="rgba(244,246,238,0.14)" stroke-width="2" fill="none">
+      <rect x="45" y="45" width="1110" height="470" rx="6"></rect>
+      <line x1="600" y1="45" x2="600" y2="515"></line>
+      <circle cx="600" cy="280" r="92"></circle>
+      <path d="M584 264 L616 296 M616 264 L584 296" stroke-width="3"></path>
+      <line x1="330" y1="45" x2="330" y2="515"></line>
+      <line x1="870" y1="45" x2="870" y2="515"></line>
+      <circle cx="155" cy="280" r="56"></circle>
+      <circle cx="1045" cy="280" r="56"></circle>
+      <line x1="100" y1="280" x2="210" y2="280"></line>
+      <line x1="990" y1="280" x2="1100" y2="280"></line>
+    </g>
+  </svg>
+  <div class="hero-inner">
+    <p class="eyebrow">TSG Tübingen präsentiert</p>
+    <h1>Deutsche Lacrosse-<br>Meisterschaft 2026</h1>
+    <p class="hero-sub">Das Final Four der Herren entscheidet den deutschen Titel – dazu kämpfen die Herren und die Damen in den Play-Ins um ihre Plätze. Ein Wochenende, drei Wettbewerbe, ein Feld.</p>
+    <div class="hero-facts">
+      <span class="fact">25.–26. Juli 2026</span>
+      <span class="fact">Tübingen</span>
+      <span class="fact fact-live" id="countdown">Erstes Faceoff: Sa, 09:00 Uhr</span>
+    </div>
+    <div class="hero-legend" aria-label="Farblegende der drei Wettbewerbe">
+      <span class="legend-item"><span class="dot dot-meist"></span>Herren-Meisterschaft · Final Four</span>
+      <span class="legend-item"><span class="dot dot-hpi"></span>Herren Play-Ins</span>
+      <span class="legend-item"><span class="dot dot-dpi"></span>Damen Play-Ins</span>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="section" id="wettbewerbe">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow" style="color: var(--champ-ink);">Ein Wochenende, drei Wettbewerbe</p>
+        <h2>Was in Tübingen gespielt wird</h2>
+        <p class="lede">Drei Wettbewerbe teilen sich das Turnierwochenende. Im Mittelpunkt steht die Herren-Meisterschaft – parallel dazu laufen die Play-Ins der Herren und der Damen. Jeder Wettbewerb hat auf dieser Seite und im Spielplan seine eigene Farbe.</p>
+      </div>
+      <div class="events">
+        <article class="event-card is-meist">
+          <span class="event-tag">Im Fokus · Samstag</span>
+          <h3>Herren-Meisterschaft – das Final Four</h3>
+          <p>Vier Teams, ein Tag, ein Titel: Die Halbfinals am Samstagvormittag entscheiden, wer am Abend um 18:30 Uhr im Finale um die deutsche Meisterschaft spielt. Die Verlierer treffen sich um 17:00 Uhr im Spiel um Platz 3. Gastgeber Tübingen greift selbst nach dem Titel.</p>
+          <ul class="event-teams">
+            <li>Köln</li>
+            <li class="host">Tübingen · Gastgeber</li>
+            <li>Frankfurt</li>
+            <li>Hamburg</li>
+          </ul>
+          <a class="event-link" href="#titel">Zum Turnierbaum</a>
+        </article>
+        <div class="event-grid-2">
+          <article class="event-card is-hpi">
+            <span class="event-tag">Samstag + Sonntag</span>
+            <h3>Herren Play-Ins</h3>
+            <p>Drei Teams spielen jeder gegen jeden – ein Spiel am Samstagmorgen, eins am Samstagnachmittag, das letzte am Sonntag.</p>
+            <ul class="event-teams">
+              <li>Stuttgart</li>
+              <li>Freiburg</li>
+              <li>München</li>
+            </ul>
+          </article>
+          <article class="event-card is-dpi">
+            <span class="event-tag">Samstag + Sonntag</span>
+            <h3>Damen Play-Ins</h3>
+            <p>Vier Teams, fünf Spiele: Nach der ersten Runde am Samstag werden am Sonntag in drei Spielen die Platzierungen ausgespielt.</p>
+            <ul class="event-teams">
+              <li>München</li>
+              <li>Heidelberg</li>
+              <li>Karlsruhe</li>
+              <li>Stuttgart</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bracket-section" id="titel">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Herren-Meisterschaft</p>
+        <h2>Der Weg zum Titel</h2>
+        <p class="lede">Alle Spiele der Meisterschaft finden am Samstag, 25. Juli statt. Wer sein Halbfinale gewinnt, steht abends im Finale.</p>
+      </div>
+      <div class="bracket">
+        <div class="semis">
+          <div class="match">
+            <div class="match-label"><span>Halbfinale 1</span><span class="match-time">Sa 10:15</span></div>
+            <div class="match-teams">Köln <span class="vs">gegen</span> Tübingen <span class="host-mark">Gastgeber</span></div>
+          </div>
+          <div class="match">
+            <div class="match-label"><span>Halbfinale 2</span><span class="match-time">Sa 11:30</span></div>
+            <div class="match-teams">Frankfurt <span class="vs">gegen</span> Hamburg</div>
+          </div>
+        </div>
+        <div class="connector" aria-hidden="true">
+          <svg viewBox="0 0 100 100" preserveAspectRatio="none" focusable="false">
+            <path d="M0 22 H50 V50 H100 M0 78 H50 V50" fill="none" stroke="rgba(244,246,238,0.4)" stroke-width="2" vector-effect="non-scaling-stroke"></path>
+          </svg>
+        </div>
+        <div class="finals">
+          <div class="match finale">
+            <div class="match-label"><span>Finale</span><span class="match-time">Sa 18:30</span></div>
+            <div class="match-teams">Gewinner HF1 <span class="vs">gegen</span> Gewinner HF2</div>
+          </div>
+          <div class="match platz3">
+            <div class="match-label"><span>Spiel um Platz 3</span><span class="match-time">Sa 17:00</span></div>
+            <div class="match-teams">Verlierer HF1 <span class="vs">gegen</span> Verlierer HF2</div>
+          </div>
+        </div>
+      </div>
+      <p class="bracket-note">Zwischen den Halbfinals und dem Finale laufen auf demselben Feld die Play-Ins – wer den ganzen Tag bleibt, sieht alle drei Wettbewerbe.</p>
+    </div>
+  </section>
+
+  <section class="section" id="spielplan">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow" style="color: var(--champ-ink);">Spielplan</p>
+        <h2>Alle Spiele im Überblick</h2>
+        <p class="lede">Nach Wettbewerb filtern – die Farbe am linken Rand zeigt, zu welchem Wettbewerb ein Spiel gehört.</p>
+      </div>
+      <div class="filters" role="group" aria-label="Spielplan nach Wettbewerb filtern">
+        <button type="button" class="f-all" data-filter="all" aria-pressed="true">Alle Spiele</button>
+        <button type="button" class="f-meist" data-filter="meist" aria-pressed="false">Herren-Meisterschaft</button>
+        <button type="button" class="f-hpi" data-filter="hpi" aria-pressed="false">Herren Play-Ins</button>
+        <button type="button" class="f-dpi" data-filter="dpi" aria-pressed="false">Damen Play-Ins</button>
+      </div>
+
+      <div class="day">
+        <h3 class="day-title">Samstag, 25. Juli 2026</h3>
+        <ul class="games">
+          <li class="game" data-event="hpi">
+            <span class="g-time">09:00</span>
+            <div class="g-main">
+              <span class="g-name">Herren Play-Ins · Spiel 1</span>
+              <span class="g-match">Stuttgart – Freiburg</span>
+            </div>
+            <span class="g-chip c-hpi">Herren Play-Ins</span>
+          </li>
+          <li class="game" data-event="meist">
+            <span class="g-time">10:15</span>
+            <div class="g-main">
+              <span class="g-name">Halbfinale 1</span>
+              <span class="g-match">Köln – Tübingen<span class="host-chip">Gastgeber</span></span>
+            </div>
+            <span class="g-chip c-meist">Meisterschaft</span>
+          </li>
+          <li class="game" data-event="meist">
+            <span class="g-time">11:30</span>
+            <div class="g-main">
+              <span class="g-name">Halbfinale 2</span>
+              <span class="g-match">Frankfurt – Hamburg</span>
+            </div>
+            <span class="g-chip c-meist">Meisterschaft</span>
+          </li>
+          <li class="game" data-event="dpi">
+            <span class="g-time">12:45</span>
+            <div class="g-main">
+              <span class="g-name">Damen Play-Ins · Spiel 1</span>
+              <span class="g-match">München – Heidelberg</span>
+            </div>
+            <span class="g-chip c-dpi">Damen Play-Ins</span>
+          </li>
+          <li class="game" data-event="hpi">
+            <span class="g-time">14:00</span>
+            <div class="g-main">
+              <span class="g-name">Herren Play-Ins · Spiel 2</span>
+              <span class="g-match">München – Stuttgart</span>
+            </div>
+            <span class="g-chip c-hpi">Herren Play-Ins</span>
+          </li>
+          <li class="game" data-event="dpi">
+            <span class="g-time">15:15</span>
+            <div class="g-main">
+              <span class="g-name">Damen Play-Ins · Spiel 2</span>
+              <span class="g-match">Karlsruhe – Stuttgart</span>
+            </div>
+            <span class="g-chip c-dpi">Damen Play-Ins</span>
+          </li>
+          <li class="game" data-event="meist">
+            <span class="g-time">17:00</span>
+            <div class="g-main">
+              <span class="g-name">Spiel um Platz 3</span>
+              <span class="g-match">Verlierer HF1 – Verlierer HF2</span>
+            </div>
+            <span class="g-chip c-meist">Meisterschaft</span>
+          </li>
+          <li class="game is-final" data-event="meist">
+            <span class="g-time">18:30</span>
+            <div class="g-main">
+              <span class="g-name">Finale um die Deutsche Meisterschaft</span>
+              <span class="g-match">Gewinner HF1 – Gewinner HF2</span>
+            </div>
+            <span class="g-chip c-meist">Meisterschaft</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="day">
+        <h3 class="day-title">Sonntag, 26. Juli 2026</h3>
+        <ul class="games">
+          <li class="game" data-event="dpi">
+            <span class="g-time">10:15</span>
+            <div class="g-main">
+              <span class="g-name">Damen Play-Ins · Spiel 3</span>
+              <span class="g-match">Sieger Spiel 1 – Sieger Spiel 2</span>
+            </div>
+            <span class="g-chip c-dpi">Damen Play-Ins</span>
+          </li>
+          <li class="game" data-event="dpi">
+            <span class="g-time">11:30</span>
+            <div class="g-main">
+              <span class="g-name">Damen Play-Ins · Spiel 4</span>
+              <span class="g-match">Verlierer Spiel 1 – Verlierer Spiel 2</span>
+            </div>
+            <span class="g-chip c-dpi">Damen Play-Ins</span>
+          </li>
+          <li class="game" data-event="hpi">
+            <span class="g-time">12:45</span>
+            <div class="g-main">
+              <span class="g-name">Herren Play-Ins · Spiel 3</span>
+              <span class="g-match">München – Freiburg</span>
+            </div>
+            <span class="g-chip c-hpi">Herren Play-Ins</span>
+          </li>
+          <li class="game" data-event="dpi">
+            <span class="g-time">14:00</span>
+            <div class="g-main">
+              <span class="g-name">Damen Play-Ins · Spiel 5</span>
+              <span class="g-match">Verlierer Spiel 3 – Gewinner Spiel 4</span>
+            </div>
+            <span class="g-chip c-dpi">Damen Play-Ins</span>
+          </li>
+        </ul>
+      </div>
+      <p class="empty-note schedule-note" id="empty-note" hidden>Für diese Auswahl gibt es an diesem Tag keine Spiele.</p>
+      <p class="schedule-note">Alle Zeiten sind Faceoff- (Herren) bzw. Draw-Zeiten (Damen). Erstellt nach dem offiziellen Spielplan des Ausrichters – Änderungen vorbehalten.</p>
+    </div>
+  </section>
+
+  <section class="section" id="playins">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow" style="color: var(--men-ink);">Die Play-Ins</p>
+        <h2>So funktionieren die Play-Ins</h2>
+      </div>
+      <div class="playins-grid">
+        <article class="playin-card">
+          <h3 style="color: var(--men-ink);">Herren Play-Ins</h3>
+          <p>Stuttgart, Freiburg und München spielen in einer einfachen Runde jeder gegen jeden – insgesamt drei Spiele.</p>
+          <ul class="mini-games">
+            <li><span class="mg-when">Sa 09:00</span><span class="mg-match">Stuttgart – Freiburg <small>Spiel 1</small></span></li>
+            <li><span class="mg-when">Sa 14:00</span><span class="mg-match">München – Stuttgart <small>Spiel 2</small></span></li>
+            <li><span class="mg-when">So 12:45</span><span class="mg-match">München – Freiburg <small>Spiel 3</small></span></li>
+          </ul>
+        </article>
+        <article class="playin-card">
+          <h3 style="color: var(--women-ink);">Damen Play-Ins</h3>
+          <p>München, Heidelberg, Karlsruhe und Stuttgart starten am Samstag in die erste Runde. Am Sonntag treffen die Siegerinnen in Spiel 3 und die Verliererinnen in Spiel 4 aufeinander – Spiel 5 entscheidet die Platzierung dazwischen.</p>
+          <ul class="mini-games">
+            <li><span class="mg-when">Sa 12:45</span><span class="mg-match">München – Heidelberg <small>Spiel 1</small></span></li>
+            <li><span class="mg-when">Sa 15:15</span><span class="mg-match">Karlsruhe – Stuttgart <small>Spiel 2</small></span></li>
+            <li><span class="mg-when">So 10:15</span><span class="mg-match">Sieger Spiel 1 – Sieger Spiel 2 <small>Spiel 3</small></span></li>
+            <li><span class="mg-when">So 11:30</span><span class="mg-match">Verlierer Spiel 1 – Verlierer Spiel 2 <small>Spiel 4</small></span></li>
+            <li><span class="mg-when">So 14:00</span><span class="mg-match">Verlierer Spiel 3 – Gewinner Spiel 4 <small>Spiel 5</small></span></li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <p><strong>Deutsche Lacrosse-Meisterschaft 2026</strong> · 25.–26. Juli · Tübingen</p>
+    <p>Ausrichter: <strong>TSG Tübingen</strong></p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  // Schedule filter
+  var buttons = document.querySelectorAll('.filters button');
+  var games = document.querySelectorAll('.game');
+  var days = document.querySelectorAll('.day');
+  var emptyNote = document.getElementById('empty-note');
+  buttons.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      buttons.forEach(function (b) { b.setAttribute('aria-pressed', String(b === btn)); });
+      var f = btn.dataset.filter;
+      games.forEach(function (g) { g.hidden = f !== 'all' && g.dataset.event !== f; });
+      var anyDayHidden = false;
+      days.forEach(function (d) {
+        var visible = d.querySelectorAll('.game:not([hidden])').length > 0;
+        d.hidden = !visible;
+        if (!visible) { anyDayHidden = true; }
+      });
+      emptyNote.hidden = !anyDayHidden;
+    });
+  });
+
+  // Countdown in the hero
+  var el = document.getElementById('countdown');
+  var firstFaceoff = new Date('2026-07-25T09:00:00+02:00');
+  var lastDraw = new Date('2026-07-26T16:00:00+02:00');
+  var now = new Date();
+  if (now >= firstFaceoff && now <= lastDraw) {
+    el.textContent = 'Spieltag – heute wird gespielt';
+  } else if (now > lastDraw) {
+    el.textContent = 'Das Turnier ist beendet';
+  } else {
+    var days_ = Math.ceil((firstFaceoff - now) / 86400000);
+    el.textContent = days_ === 1
+      ? 'Morgen: erstes Faceoff um 09:00 Uhr'
+      : 'Noch ' + days_ + ' Tage bis zum ersten Faceoff';
+  }
+})();
+</script>
+
+</body>
+</html>
