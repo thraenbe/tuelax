@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Deutsche Lacrosse-Meisterschaft 2026 · TSG Tübingen</title>
-<meta name="description" content="Deutsche Lacrosse-Meisterschaft 2026 in Tübingen, 25.–26. Juli: Final Four der Herren, Herren Play-Ins und Damen Play-Ins. Ausrichter: TSG Tübingen.">
+<meta name="description" content="Deutsche Lacrosse-Meisterschaft 2026 in Tübingen, 25.–26. Juli: Final Four der Herren, Herren Play-Ins und Damen Play-Ins. Ausrichter: TSG Tübingen. Eintritt frei.">
 <style>
 /* ---------- Tokens ---------- */
 :root {
@@ -86,10 +86,6 @@
 
 /* ---------- Base ---------- */
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-}
 body {
   margin: 0;
   background: var(--ground);
@@ -115,7 +111,7 @@ button { font: inherit; cursor: pointer; }
   border-radius: 2px;
 }
 .wrap { max-width: 1060px; margin: 0 auto; }
-.section { padding: 72px 22px; }
+.section { padding: 56px 22px; }
 .eyebrow {
   font-family: var(--display);
   font-stretch: condensed;
@@ -133,7 +129,7 @@ button { font: inherit; cursor: pointer; }
   color: var(--ink-soft);
 }
 
-/* ---------- Hero (deliberately single-world: the pitch) ---------- */
+/* ---------- Hero ---------- */
 .hero {
   position: relative;
   background: var(--pitch);
@@ -150,25 +146,58 @@ button { font: inherit; cursor: pointer; }
   position: relative;
   max-width: 1060px;
   margin: 0 auto;
-  padding: 92px 22px 72px;
+  padding: 44px 22px 52px;
+}
+.hero-logos {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 26px;
+}
+.hero-logos img {
+  height: 72px;
+  width: auto;
+  background: #FFFFFF;
+  border-radius: 14px;
+  padding: 7px 10px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
 }
 .hero .eyebrow { color: var(--women); }
 .hero h1 {
-  font-size: clamp(2.7rem, 8.5vw, 5.4rem);
+  font-size: clamp(2.5rem, 8vw, 5rem);
   font-weight: 700;
   letter-spacing: 0.01em;
-  margin: 14px 0 18px;
+  margin: 12px 0 16px;
 }
 .hero-sub {
   max-width: 56ch;
   font-size: 1.08rem;
   color: var(--chalk-dim);
 }
+.beer-callout {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 26px;
+  padding: 14px 24px;
+  background: var(--women);
+  color: #241B04;
+  border-radius: 12px;
+  font-family: var(--display);
+  font-stretch: condensed;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: clamp(1.15rem, 3.4vw, 1.6rem);
+  font-weight: 700;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+  transform: rotate(-1deg);
+}
+.beer-callout .beer-emoji { font-size: 1.4em; }
 .hero-facts {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  margin-top: 30px;
+  margin-top: 26px;
 }
 .fact {
   font-family: var(--display);
@@ -181,35 +210,67 @@ button { font: inherit; cursor: pointer; }
   border-radius: 999px;
 }
 .fact.fact-live { border-color: var(--women); color: var(--women); }
-.hero-legend {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 18px;
-  margin-top: 44px;
-  padding-top: 20px;
-  border-top: 1px solid var(--chalk-line);
-  font-size: 0.92rem;
-  color: var(--chalk-dim);
-}
-.legend-item { display: inline-flex; align-items: center; gap: 8px; }
-.dot { width: 11px; height: 11px; border-radius: 50%; flex: none; }
-.dot-meist { background: #E2603A; }
-.dot-hpi { background: #4CAF6E; }
-.dot-dpi { background: #E0B33A; }
 @media (prefers-reduced-motion: no-preference) {
   .hero-inner > * { animation: rise 0.7s ease-out backwards; }
   .hero-inner > *:nth-child(2) { animation-delay: 0.08s; }
   .hero-inner > *:nth-child(3) { animation-delay: 0.16s; }
   .hero-inner > *:nth-child(4) { animation-delay: 0.24s; }
   .hero-inner > *:nth-child(5) { animation-delay: 0.32s; }
+  .hero-inner > *:nth-child(6) { animation-delay: 0.4s; }
   @keyframes rise {
     from { opacity: 0; transform: translateY(14px); }
     to { opacity: 1; transform: none; }
   }
+  .beer-callout { animation: rise 0.7s ease-out backwards, wobble 3.2s ease-in-out 1.2s infinite; }
+  @keyframes wobble {
+    0%, 100% { transform: rotate(-1deg); }
+    50% { transform: rotate(0.6deg); }
+  }
 }
 
-/* ---------- Three competitions ---------- */
-.events { display: grid; gap: 16px; }
+/* ---------- Tabs ---------- */
+.tabbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--pitch-deep);
+  border-bottom: 3px solid var(--women);
+}
+.tabbar .wrap {
+  display: flex;
+  gap: 2px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 0 12px;
+  scrollbar-width: none;
+}
+.tabbar .wrap::-webkit-scrollbar { display: none; }
+.tabbar button {
+  flex: none;
+  appearance: none;
+  background: none;
+  border: none;
+  color: var(--chalk-dim);
+  font-family: var(--display);
+  font-stretch: condensed;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  font-size: 0.98rem;
+  font-weight: 700;
+  padding: 15px 16px 12px;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -3px;
+  white-space: nowrap;
+}
+.tabbar button:hover { color: var(--chalk); }
+.tabbar button[aria-selected="true"] {
+  color: var(--chalk);
+  border-bottom-color: var(--women);
+  background: rgba(244, 246, 238, 0.07);
+}
+.panel[hidden] { display: none; }
+
+/* ---------- Competition cards ---------- */
 .event-card {
   background: var(--surface);
   border: 1px solid var(--line);
@@ -256,24 +317,6 @@ button { font: inherit; cursor: pointer; }
   border-radius: 999px;
 }
 .event-teams li.host { border-color: var(--champ); color: var(--champ-ink); }
-.event-grid-2 { display: grid; gap: 16px; }
-@media (min-width: 720px) {
-  .event-grid-2 { grid-template-columns: 1fr 1fr; }
-}
-.event-link {
-  display: inline-block;
-  margin-top: 16px;
-  font-family: var(--display);
-  font-stretch: condensed;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: var(--champ-ink);
-  text-decoration: none;
-  border-bottom: 2px solid var(--champ);
-  padding-bottom: 2px;
-}
 
 /* ---------- Bracket ---------- */
 .bracket-section {
@@ -373,6 +416,7 @@ button { font: inherit; cursor: pointer; }
   font-size: 1.1rem;
 }
 .champion strong { color: var(--women); font-size: 1.35rem; margin-left: 6px; }
+.champion[hidden] { display: none; }
 .connector { display: none; }
 @media (min-width: 860px) {
   .connector { display: block; height: 100%; min-height: 260px; }
@@ -494,40 +538,148 @@ button { font: inherit; cursor: pointer; }
   .g-score { font-size: 1.05rem; }
 }
 
-/* ---------- Play-Ins detail ---------- */
-.playins-grid { display: grid; gap: 16px; }
-@media (min-width: 780px) {
-  .playins-grid { grid-template-columns: 1fr 1fr; }
+/* ---------- Über Lacrosse ---------- */
+.info-grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  margin-bottom: 44px;
 }
+.info-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 18px 20px;
+}
+.info-card .info-label {
+  display: block;
+  font-family: var(--display);
+  font-stretch: condensed;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--champ-ink);
+  margin-bottom: 6px;
+}
+.info-card p { font-size: 0.97rem; }
+.info-card a { color: var(--champ-ink); }
+.prose { max-width: 72ch; color: var(--ink-soft); }
+.prose + .prose { margin-top: 14px; }
+.prose strong { color: var(--ink); }
+.rules-list {
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 12px;
+}
+@media (min-width: 720px) {
+  .rules-list { grid-template-columns: 1fr 1fr; gap: 14px; }
+}
+.rules-list li {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 14px 18px;
+  color: var(--ink-soft);
+  font-size: 0.96rem;
+}
+.rules-list li strong {
+  display: block;
+  font-family: var(--display);
+  font-stretch: condensed;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.8rem;
+  color: var(--men-ink);
+  margin-bottom: 4px;
+}
+.about-block { margin-bottom: 40px; }
+.about-block h3 {
+  font-size: 1.5rem;
+  margin-bottom: 14px;
+}
+details.more {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+details.more summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  font-family: var(--display);
+  font-stretch: condensed;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+details.more summary::-webkit-details-marker { display: none; }
+details.more summary::after {
+  content: "+";
+  font-size: 1.4rem;
+  color: var(--champ-ink);
+  flex: none;
+}
+details.more[open] summary::after { content: "–"; }
+details.more .more-body { padding: 0 20px 20px; }
+details.more .more-body p { color: var(--ink-soft); max-width: 72ch; }
+details.more .more-body p + p { margin-top: 12px; }
+details.more .more-body ul {
+  margin: 12px 0 0;
+  padding-left: 20px;
+  color: var(--ink-soft);
+}
+details.more .more-body li { margin-bottom: 6px; }
+details.more .more-body li strong { color: var(--ink); }
+.compare-scroll { overflow-x: auto; margin-top: 12px; }
+.compare {
+  width: 100%;
+  min-width: 560px;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+.compare th, .compare td {
+  text-align: left;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+.compare thead th {
+  font-family: var(--display);
+  font-stretch: condensed;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  border-bottom: 2px solid var(--ink);
+}
+.compare tbody th {
+  font-weight: 600;
+  white-space: nowrap;
+  color: var(--ink);
+}
+.compare td { color: var(--ink-soft); }
+
+/* ---------- Play-Ins detail ---------- */
 .playin-card {
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 10px;
   padding: 26px;
+  margin-bottom: 34px;
 }
 .playin-card h3 { font-size: 1.4rem; margin-bottom: 10px; }
-.playin-card > p { color: var(--ink-soft); }
-.mini-games { list-style: none; margin: 18px 0 0; padding: 0; }
-.mini-games li {
-  display: flex;
-  gap: 14px;
-  align-items: baseline;
-  padding: 9px 0;
-  border-bottom: 1px dashed var(--line);
-}
-.mini-games li:last-child { border-bottom: none; }
-.mg-when {
-  font-family: var(--display);
-  font-stretch: condensed;
-  font-variant-numeric: tabular-nums;
-  font-weight: 700;
-  font-size: 0.95rem;
-  white-space: nowrap;
-  flex: none;
-  width: 84px;
-}
-.mg-match { font-size: 0.97rem; }
-.mg-match small { display: block; color: var(--ink-soft); }
+.playin-card > p { color: var(--ink-soft); max-width: 72ch; }
+.playin-card > p + p { margin-top: 12px; }
+.playin-card > p strong { color: var(--ink); }
 
 /* ---------- Footer ---------- */
 .site-foot {
@@ -541,8 +693,17 @@ button { font: inherit; cursor: pointer; }
   flex-wrap: wrap;
   gap: 12px 40px;
   justify-content: space-between;
+  align-items: center;
 }
 .site-foot strong { color: var(--chalk); font-weight: 600; }
+.foot-logos { display: flex; gap: 10px; align-items: center; }
+.foot-logos img {
+  height: 44px;
+  width: auto;
+  background: #FFFFFF;
+  border-radius: 8px;
+  padding: 4px 6px;
+}
 </style>
 </head>
 <body>
@@ -563,305 +724,555 @@ button { font: inherit; cursor: pointer; }
     </g>
   </svg>
   <div class="hero-inner">
+    <div class="hero-logos">
+      <a href="https://tuebingen-lacrosse.de/" target="_blank" rel="noopener"><img src="assets/tuelax-logo.png" alt="Tübingen Lacrosse – Vereinslogo"></a>
+      <a href="https://tsg-tuebingen.de/abteilungen/lacrosse/" target="_blank" rel="noopener"><img src="assets/tsg-logo.png" alt="TSG Tübingen 1845 e.V. – Vereinslogo"></a>
+    </div>
     <p class="eyebrow">TSG Tübingen präsentiert</p>
     <h1>Deutsche Lacrosse-<br>Meisterschaft 2026</h1>
-    <p class="hero-sub">Das Final Four der Herren entscheidet den deutschen Titel – dazu kämpfen die Herren und die Damen in den Play-Ins um ihre Plätze. Ein Wochenende, drei Wettbewerbe, ein Feld.</p>
+    <p class="hero-sub">Das Final Four der Herren entscheidet den deutschen Titel – dazu kämpfen die Herren und die Damen in den Play-Ins um ihre Plätze. Ein Wochenende, drei Wettbewerbe, ein Feld. Eintritt frei!</p>
+    <p class="beer-callout"><span class="beer-emoji" aria-hidden="true">🍻</span>Die ersten 100 Bier gehen auf uns.</p>
     <div class="hero-facts">
       <span class="fact">25.–26. Juli 2026</span>
-      <span class="fact">Tübingen</span>
+      <span class="fact">Freibad 3 · Tübingen</span>
       <span class="fact fact-live" id="countdown">Erstes Faceoff: Sa, 09:00 Uhr</span>
-    </div>
-    <div class="hero-legend" aria-label="Farblegende der drei Wettbewerbe">
-      <span class="legend-item"><span class="dot dot-meist"></span>Herren-Meisterschaft · Final Four</span>
-      <span class="legend-item"><span class="dot dot-hpi"></span>Herren Play-Ins</span>
-      <span class="legend-item"><span class="dot dot-dpi"></span>Damen Play-Ins</span>
     </div>
   </div>
 </header>
 
+<nav class="tabbar" aria-label="Bereiche der Seite">
+  <div class="wrap" role="tablist">
+    <button type="button" role="tab" id="tab-spielplan" aria-controls="panel-spielplan" aria-selected="true" data-tab="spielplan">Spielplan</button>
+    <button type="button" role="tab" id="tab-meisterschaft" aria-controls="panel-meisterschaft" aria-selected="false" data-tab="meisterschaft">Meisterschaft Herren</button>
+    <button type="button" role="tab" id="tab-playins-damen" aria-controls="panel-playins-damen" aria-selected="false" data-tab="playins-damen">Play-Ins Damen</button>
+    <button type="button" role="tab" id="tab-playins-herren" aria-controls="panel-playins-herren" aria-selected="false" data-tab="playins-herren">Play-Ins Herren</button>
+    <button type="button" role="tab" id="tab-lacrosse" aria-controls="panel-lacrosse" aria-selected="false" data-tab="lacrosse">Über Lacrosse</button>
+  </div>
+</nav>
+
 <main>
-  <section class="section" id="wettbewerbe">
-    <div class="wrap">
-      <div class="section-head">
-        <p class="eyebrow" style="color: var(--champ-ink);">Ein Wochenende, drei Wettbewerbe</p>
-        <h2>Was in Tübingen gespielt wird</h2>
-        <p class="lede">Drei Wettbewerbe teilen sich das Turnierwochenende. Im Mittelpunkt steht die Herren-Meisterschaft – parallel dazu laufen die Play-Ins der Herren und der Damen. Jeder Wettbewerb hat auf dieser Seite und im Spielplan seine eigene Farbe.</p>
+
+  <!-- ========== Tab 1: Spielplan ========== -->
+  <section class="panel" id="panel-spielplan" role="tabpanel" aria-labelledby="tab-spielplan">
+    <div class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow" style="color: var(--champ-ink);">Spielplan</p>
+          <h2>Alle Spiele im Überblick</h2>
+          <p class="lede">Nach Wettbewerb filtern – die Farbe am linken Rand zeigt, zu welchem Wettbewerb ein Spiel gehört. Ergebnisse erscheinen hier automatisch, sobald sie eingetragen sind.</p>
+        </div>
+        <div class="filters" role="group" aria-label="Spielplan nach Wettbewerb filtern">
+          <button type="button" class="f-all" data-filter="all" aria-pressed="true">Alle Spiele</button>
+          <button type="button" class="f-meist" data-filter="meist" aria-pressed="false">Herren-Meisterschaft</button>
+          <button type="button" class="f-hpi" data-filter="hpi" aria-pressed="false">Herren Play-Ins</button>
+          <button type="button" class="f-dpi" data-filter="dpi" aria-pressed="false">Damen Play-Ins</button>
+        </div>
+
+        <div class="day">
+          <h3 class="day-title">Samstag, 25. Juli 2026</h3>
+          <ul class="games">
+            <li class="game" data-event="hpi" data-game="hpi1">
+              <span class="g-time">09:00</span>
+              <div class="g-main">
+                <span class="g-name">Herren Play-Ins · Spiel 1</span>
+                <span class="g-match">Stuttgart – Freiburg</span>
+              </div>
+              <span class="g-score" hidden></span>
+              <span class="g-chip c-hpi">Herren Play-Ins</span>
+            </li>
+            <li class="game" data-event="meist" data-game="hf1">
+              <span class="g-time">10:15</span>
+              <div class="g-main">
+                <span class="g-name">Halbfinale 1</span>
+                <span class="g-match">Köln – Tübingen<span class="host-chip">Gastgeber</span></span>
+              </div>
+              <span class="g-score" hidden></span>
+              <span class="g-chip c-meist">Meisterschaft</span>
+            </li>
+            <li class="game" data-event="meist" data-game="hf2">
+              <span class="g-time">11:30</span>
+              <div class="g-main">
+                <span class="g-name">Halbfinale 2</span>
+                <span class="g-match">Frankfurt – Hamburg</span>
+              </div>
+              <span class="g-score" hidden></span>
+              <span class="g-chip c-meist">Meisterschaft</span>
+            </li>
+            <li class="game" data-event="dpi" data-game="dpi1">
+              <span class="g-time">12:45</span>
+              <div class="g-main">
+                <span class="g-name">Damen Play-Ins · Spiel 1</span>
+                <span class="g-match">München – Heidelberg</span>
+              </div>
+              <span class="g-score" hidden></span>
+              <span class="g-chip c-dpi">Damen Play-Ins</span>
+            </li>
+            <li class="game" data-event="hpi" data-game="hpi2">
+              <span class="g-time">14:00</span>
+              <div class="g-main">
+                <span class="g-name">Herren Play-Ins · Spiel 2</span>
+                <span class="g-match">München – Stuttgart</span>
+              </div>
+              <span class="g-score" hidden></span>
+              <span class="g-chip c-hpi">Herren Play-Ins</span>
+            </li>
+            <li class="game" data-event="dpi" data-game="dpi2">
+              <span class="g-time">15:15</span>
+              <div class="g-main">
+                <span class="g-name">Damen Play-Ins · Spiel 2</span>
+                <span class="g-match">Karlsruhe – Stuttgart</span>
+              </div>
+              <span class="g-score" hidden></span>
+              <span class="g-chip c-dpi">Damen Play-Ins</span>
+            </li>
+            <li class="game" data-event="meist" data-game="p3" data-dynamic>
+              <span class="g-time">17:00</span>
+              <div class="g-main">
+                <span class="g-name">Spiel um Platz 3</span>
+                <span class="g-match">Verlierer HF1 – Verlierer HF2</span>
+              </div>
+              <span class="g-score" hidden></span>
+              <span class="g-chip c-meist">Meisterschaft</span>
+            </li>
+            <li class="game is-final" data-event="meist" data-game="finale" data-dynamic>
+              <span class="g-time">18:30</span>
+              <div class="g-main">
+                <span class="g-name">Finale um die Deutsche Meisterschaft</span>
+                <span class="g-match">Gewinner HF1 – Gewinner HF2</span>
+              </div>
+              <span class="g-score" hidden></span>
+              <span class="g-chip c-meist">Meisterschaft</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="day">
+          <h3 class="day-title">Sonntag, 26. Juli 2026</h3>
+          <ul class="games">
+            <li class="game" data-event="dpi" data-game="dpi3" data-dynamic>
+              <span class="g-time">10:15</span>
+              <div class="g-main">
+                <span class="g-name">Damen Play-Ins · Spiel 3</span>
+                <span class="g-match">Sieger Spiel 1 – Sieger Spiel 2</span>
+              </div>
+              <span class="g-score" hidden></span>
+              <span class="g-chip c-dpi">Damen Play-Ins</span>
+            </li>
+            <li class="game" data-event="dpi" data-game="dpi4" data-dynamic>
+              <span class="g-time">11:30</span>
+              <div class="g-main">
+                <span class="g-name">Damen Play-Ins · Spiel 4</span>
+                <span class="g-match">Verlierer Spiel 1 – Verlierer Spiel 2</span>
+              </div>
+              <span class="g-score" hidden></span>
+              <span class="g-chip c-dpi">Damen Play-Ins</span>
+            </li>
+            <li class="game" data-event="hpi" data-game="hpi3">
+              <span class="g-time">12:45</span>
+              <div class="g-main">
+                <span class="g-name">Herren Play-Ins · Spiel 3</span>
+                <span class="g-match">München – Freiburg</span>
+              </div>
+              <span class="g-score" hidden></span>
+              <span class="g-chip c-hpi">Herren Play-Ins</span>
+            </li>
+            <li class="game" data-event="dpi" data-game="dpi5" data-dynamic>
+              <span class="g-time">14:00</span>
+              <div class="g-main">
+                <span class="g-name">Damen Play-Ins · Spiel 5</span>
+                <span class="g-match">Verlierer Spiel 3 – Gewinner Spiel 4</span>
+              </div>
+              <span class="g-score" hidden></span>
+              <span class="g-chip c-dpi">Damen Play-Ins</span>
+            </li>
+          </ul>
+        </div>
+        <p class="empty-note schedule-note" id="empty-note" hidden>Für diese Auswahl gibt es an diesem Tag keine Spiele.</p>
+        <p class="schedule-note">Alle Zeiten sind Faceoff- (Herren) bzw. Draw-Zeiten (Damen). Erstellt nach dem offiziellen Spielplan des Ausrichters – Änderungen vorbehalten.</p>
       </div>
-      <div class="events">
+    </div>
+  </section>
+
+  <!-- ========== Tab 2: Meisterschaft Herren ========== -->
+  <section class="panel" id="panel-meisterschaft" role="tabpanel" aria-labelledby="tab-meisterschaft" hidden>
+    <div class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow" style="color: var(--champ-ink);">Meisterschaft Herren</p>
+          <h2>Das Final Four um den deutschen Titel</h2>
+          <p class="lede">Zum ersten Mal finden die Deutschen Meisterschaften der Herren im Sixes-Lacrosse in Tübingen statt. Die besten vier Teams aus Deutschland spielen am Samstag, 25. Juli um den Meistertitel.</p>
+        </div>
         <article class="event-card is-meist">
-          <span class="event-tag">Im Fokus · Samstag</span>
-          <h3>Herren-Meisterschaft – das Final Four</h3>
-          <p>Vier Teams, ein Tag, ein Titel: Die Halbfinals am Samstagvormittag entscheiden, wer am Abend um 18:30 Uhr im Finale um die deutsche Meisterschaft spielt. Die Verlierer treffen sich um 17:00 Uhr im Spiel um Platz 3. Gastgeber Tübingen greift selbst nach dem Titel.</p>
+          <span class="event-tag">Final Four · Samstag, 25. Juli</span>
+          <h3>Wer ist qualifiziert?</h3>
+          <p>Qualifiziert sind die beiden Erstplatzierten jeder Liga: Köln und Hamburg aus der Bundesliga Nord, Frankfurt und Tübingen aus der Bundesliga Süd. Damit ist Tübingen dieses Jahr nicht nur Ausrichter, sondern auch Teilnehmer. Die Halbfinals laufen am Vormittag, das Spiel um Platz 3 um 17:00 Uhr und das Finale um 18:30 Uhr. Titelverteidiger ist Köln. Die Spiele der DM werden voraussichtlich auf YouTube gestreamt.</p>
           <ul class="event-teams">
-            <li>Köln</li>
-            <li class="host">Tübingen · Gastgeber</li>
-            <li>Frankfurt</li>
-            <li>Hamburg</li>
+            <li>Köln · Nord</li>
+            <li>Hamburg · Nord</li>
+            <li>Frankfurt · Süd</li>
+            <li class="host">Tübingen · Süd · Gastgeber</li>
           </ul>
-          <a class="event-link" href="#titel">Zum Turnierbaum</a>
         </article>
-        <div class="event-grid-2">
-          <article class="event-card is-hpi">
-            <span class="event-tag">Samstag + Sonntag</span>
-            <h3>Herren Play-Ins</h3>
-            <p>Drei Teams spielen jeder gegen jeden – ein Spiel am Samstagmorgen, eins am Samstagnachmittag, das letzte am Sonntag.</p>
-            <ul class="event-teams">
-              <li>Stuttgart</li>
-              <li>Freiburg</li>
-              <li>München</li>
-            </ul>
-          </article>
-          <article class="event-card is-dpi">
-            <span class="event-tag">Samstag + Sonntag</span>
-            <h3>Damen Play-Ins</h3>
-            <p>Vier Teams, fünf Spiele: Nach der ersten Runde am Samstag werden am Sonntag in drei Spielen die Platzierungen ausgespielt.</p>
-            <ul class="event-teams">
-              <li>München</li>
-              <li>Heidelberg</li>
-              <li>Karlsruhe</li>
-              <li>Stuttgart</li>
-            </ul>
-          </article>
+      </div>
+    </div>
+    <div class="section bracket-section">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Turnierbaum</p>
+          <h2>Der Weg zum Titel</h2>
+          <p class="lede">Wer sein Halbfinale gewinnt, steht abends im Finale.</p>
         </div>
+        <div class="bracket">
+          <div class="semis">
+            <div class="match" data-game="hf1">
+              <div class="match-label"><span>Halbfinale 1</span><span class="match-time">Sa 10:15</span></div>
+              <div class="team-row" data-side="home"><span class="t-name">Köln</span><span class="t-score" hidden></span></div>
+              <div class="team-row" data-side="away"><span class="t-name">Tübingen <span class="host-mark">Gastgeber</span></span><span class="t-score" hidden></span></div>
+            </div>
+            <div class="match" data-game="hf2">
+              <div class="match-label"><span>Halbfinale 2</span><span class="match-time">Sa 11:30</span></div>
+              <div class="team-row" data-side="home"><span class="t-name">Frankfurt</span><span class="t-score" hidden></span></div>
+              <div class="team-row" data-side="away"><span class="t-name">Hamburg</span><span class="t-score" hidden></span></div>
+            </div>
+          </div>
+          <div class="connector" aria-hidden="true">
+            <svg viewBox="0 0 100 100" preserveAspectRatio="none" focusable="false">
+              <path d="M0 22 H50 V50 H100 M0 78 H50 V50" fill="none" stroke="rgba(244,246,238,0.4)" stroke-width="2" vector-effect="non-scaling-stroke"></path>
+            </svg>
+          </div>
+          <div class="finals">
+            <div class="match finale" data-game="finale">
+              <div class="match-label"><span>Finale</span><span class="match-time">Sa 18:30</span></div>
+              <div class="team-row" data-side="home"><span class="t-name pending" data-slot>Gewinner HF1</span><span class="t-score" hidden></span></div>
+              <div class="team-row" data-side="away"><span class="t-name pending" data-slot>Gewinner HF2</span><span class="t-score" hidden></span></div>
+            </div>
+            <div class="match platz3" data-game="p3">
+              <div class="match-label"><span>Spiel um Platz 3</span><span class="match-time">Sa 17:00</span></div>
+              <div class="team-row" data-side="home"><span class="t-name pending" data-slot>Verlierer HF1</span><span class="t-score" hidden></span></div>
+              <div class="team-row" data-side="away"><span class="t-name pending" data-slot>Verlierer HF2</span><span class="t-score" hidden></span></div>
+            </div>
+          </div>
+        </div>
+        <p class="champion" id="champion" hidden>Deutscher Meister 2026:<strong></strong></p>
+        <p class="bracket-note">Sobald ein Halbfinale entschieden ist, rücken Sieger und Verlierer hier automatisch ins Finale bzw. ins Spiel um Platz 3 nach. Zwischen den Halbfinals und dem Finale laufen auf demselben Feld die Play-Ins – wer den ganzen Tag bleibt, sieht alle drei Wettbewerbe.</p>
       </div>
     </div>
   </section>
 
-  <section class="section bracket-section" id="titel">
-    <div class="wrap">
-      <div class="section-head">
-        <p class="eyebrow">Herren-Meisterschaft</p>
-        <h2>Der Weg zum Titel</h2>
-        <p class="lede">Alle Spiele der Meisterschaft finden am Samstag, 25. Juli statt. Wer sein Halbfinale gewinnt, steht abends im Finale.</p>
-      </div>
-      <div class="bracket">
-        <div class="semis">
-          <div class="match" data-game="hf1">
-            <div class="match-label"><span>Halbfinale 1</span><span class="match-time">Sa 10:15</span></div>
-            <div class="team-row" data-side="home"><span class="t-name">Köln</span><span class="t-score" hidden></span></div>
-            <div class="team-row" data-side="away"><span class="t-name">Tübingen <span class="host-mark">Gastgeber</span></span><span class="t-score" hidden></span></div>
-          </div>
-          <div class="match" data-game="hf2">
-            <div class="match-label"><span>Halbfinale 2</span><span class="match-time">Sa 11:30</span></div>
-            <div class="team-row" data-side="home"><span class="t-name">Frankfurt</span><span class="t-score" hidden></span></div>
-            <div class="team-row" data-side="away"><span class="t-name">Hamburg</span><span class="t-score" hidden></span></div>
-          </div>
+  <!-- ========== Tab 3: Play-Ins Damen ========== -->
+  <section class="panel" id="panel-playins-damen" role="tabpanel" aria-labelledby="tab-playins-damen" hidden>
+    <div class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow" style="color: var(--women-ink);">Play-Ins Damen</p>
+          <h2>Vier Teams, fünf Spiele</h2>
+          <p class="lede">Die Dritt- und Viertplatzierten der 1. Liga Süd treffen auf die beiden besten Teams der 2. Liga. Gespielt wird an beiden Tagen, 25. &amp; 26. Juli.</p>
         </div>
-        <div class="connector" aria-hidden="true">
-          <svg viewBox="0 0 100 100" preserveAspectRatio="none" focusable="false">
-            <path d="M0 22 H50 V50 H100 M0 78 H50 V50" fill="none" stroke="rgba(244,246,238,0.4)" stroke-width="2" vector-effect="non-scaling-stroke"></path>
-          </svg>
-        </div>
-        <div class="finals">
-          <div class="match finale" data-game="finale">
-            <div class="match-label"><span>Finale</span><span class="match-time">Sa 18:30</span></div>
-            <div class="team-row" data-side="home"><span class="t-name pending" data-slot>Gewinner HF1</span><span class="t-score" hidden></span></div>
-            <div class="team-row" data-side="away"><span class="t-name pending" data-slot>Gewinner HF2</span><span class="t-score" hidden></span></div>
-          </div>
-          <div class="match platz3" data-game="p3">
-            <div class="match-label"><span>Spiel um Platz 3</span><span class="match-time">Sa 17:00</span></div>
-            <div class="team-row" data-side="home"><span class="t-name pending" data-slot>Verlierer HF1</span><span class="t-score" hidden></span></div>
-            <div class="team-row" data-side="away"><span class="t-name pending" data-slot>Verlierer HF2</span><span class="t-score" hidden></span></div>
-          </div>
-        </div>
-      </div>
-      <p class="champion" id="champion" hidden>Deutscher Meister 2026:<strong></strong></p>
-      <p class="bracket-note">Sobald ein Halbfinale entschieden ist, rücken Sieger und Verlierer hier automatisch ins Finale bzw. ins Spiel um Platz 3 nach. Zwischen den Halbfinals und dem Finale laufen auf demselben Feld die Play-Ins – wer den ganzen Tag bleibt, sieht alle drei Wettbewerbe.</p>
-    </div>
-  </section>
-
-  <section class="section" id="spielplan">
-    <div class="wrap">
-      <div class="section-head">
-        <p class="eyebrow" style="color: var(--champ-ink);">Spielplan</p>
-        <h2>Alle Spiele im Überblick</h2>
-        <p class="lede">Nach Wettbewerb filtern – die Farbe am linken Rand zeigt, zu welchem Wettbewerb ein Spiel gehört. Ergebnisse erscheinen hier automatisch, sobald sie eingetragen sind.</p>
-      </div>
-      <div class="filters" role="group" aria-label="Spielplan nach Wettbewerb filtern">
-        <button type="button" class="f-all" data-filter="all" aria-pressed="true">Alle Spiele</button>
-        <button type="button" class="f-meist" data-filter="meist" aria-pressed="false">Herren-Meisterschaft</button>
-        <button type="button" class="f-hpi" data-filter="hpi" aria-pressed="false">Herren Play-Ins</button>
-        <button type="button" class="f-dpi" data-filter="dpi" aria-pressed="false">Damen Play-Ins</button>
-      </div>
-
-      <div class="day">
-        <h3 class="day-title">Samstag, 25. Juli 2026</h3>
-        <ul class="games">
-          <li class="game" data-event="hpi" data-game="hpi1">
-            <span class="g-time">09:00</span>
-            <div class="g-main">
-              <span class="g-name">Herren Play-Ins · Spiel 1</span>
-              <span class="g-match">Stuttgart – Freiburg</span>
-            </div>
-            <span class="g-score" hidden></span>
-            <span class="g-chip c-hpi">Herren Play-Ins</span>
-          </li>
-          <li class="game" data-event="meist" data-game="hf1">
-            <span class="g-time">10:15</span>
-            <div class="g-main">
-              <span class="g-name">Halbfinale 1</span>
-              <span class="g-match">Köln – Tübingen<span class="host-chip">Gastgeber</span></span>
-            </div>
-            <span class="g-score" hidden></span>
-            <span class="g-chip c-meist">Meisterschaft</span>
-          </li>
-          <li class="game" data-event="meist" data-game="hf2">
-            <span class="g-time">11:30</span>
-            <div class="g-main">
-              <span class="g-name">Halbfinale 2</span>
-              <span class="g-match">Frankfurt – Hamburg</span>
-            </div>
-            <span class="g-score" hidden></span>
-            <span class="g-chip c-meist">Meisterschaft</span>
-          </li>
-          <li class="game" data-event="dpi" data-game="dpi1">
-            <span class="g-time">12:45</span>
-            <div class="g-main">
-              <span class="g-name">Damen Play-Ins · Spiel 1</span>
-              <span class="g-match">München – Heidelberg</span>
-            </div>
-            <span class="g-score" hidden></span>
-            <span class="g-chip c-dpi">Damen Play-Ins</span>
-          </li>
-          <li class="game" data-event="hpi" data-game="hpi2">
-            <span class="g-time">14:00</span>
-            <div class="g-main">
-              <span class="g-name">Herren Play-Ins · Spiel 2</span>
-              <span class="g-match">München – Stuttgart</span>
-            </div>
-            <span class="g-score" hidden></span>
-            <span class="g-chip c-hpi">Herren Play-Ins</span>
-          </li>
-          <li class="game" data-event="dpi" data-game="dpi2">
-            <span class="g-time">15:15</span>
-            <div class="g-main">
-              <span class="g-name">Damen Play-Ins · Spiel 2</span>
-              <span class="g-match">Karlsruhe – Stuttgart</span>
-            </div>
-            <span class="g-score" hidden></span>
-            <span class="g-chip c-dpi">Damen Play-Ins</span>
-          </li>
-          <li class="game" data-event="meist" data-game="p3" data-dynamic>
-            <span class="g-time">17:00</span>
-            <div class="g-main">
-              <span class="g-name">Spiel um Platz 3</span>
-              <span class="g-match">Verlierer HF1 – Verlierer HF2</span>
-            </div>
-            <span class="g-score" hidden></span>
-            <span class="g-chip c-meist">Meisterschaft</span>
-          </li>
-          <li class="game is-final" data-event="meist" data-game="finale" data-dynamic>
-            <span class="g-time">18:30</span>
-            <div class="g-main">
-              <span class="g-name">Finale um die Deutsche Meisterschaft</span>
-              <span class="g-match">Gewinner HF1 – Gewinner HF2</span>
-            </div>
-            <span class="g-score" hidden></span>
-            <span class="g-chip c-meist">Meisterschaft</span>
-          </li>
-        </ul>
-      </div>
-
-      <div class="day">
-        <h3 class="day-title">Sonntag, 26. Juli 2026</h3>
-        <ul class="games">
-          <li class="game" data-event="dpi" data-game="dpi3" data-dynamic>
-            <span class="g-time">10:15</span>
-            <div class="g-main">
-              <span class="g-name">Damen Play-Ins · Spiel 3</span>
-              <span class="g-match">Sieger Spiel 1 – Sieger Spiel 2</span>
-            </div>
-            <span class="g-score" hidden></span>
-            <span class="g-chip c-dpi">Damen Play-Ins</span>
-          </li>
-          <li class="game" data-event="dpi" data-game="dpi4" data-dynamic>
-            <span class="g-time">11:30</span>
-            <div class="g-main">
-              <span class="g-name">Damen Play-Ins · Spiel 4</span>
-              <span class="g-match">Verlierer Spiel 1 – Verlierer Spiel 2</span>
-            </div>
-            <span class="g-score" hidden></span>
-            <span class="g-chip c-dpi">Damen Play-Ins</span>
-          </li>
-          <li class="game" data-event="hpi" data-game="hpi3">
-            <span class="g-time">12:45</span>
-            <div class="g-main">
-              <span class="g-name">Herren Play-Ins · Spiel 3</span>
-              <span class="g-match">München – Freiburg</span>
-            </div>
-            <span class="g-score" hidden></span>
-            <span class="g-chip c-hpi">Herren Play-Ins</span>
-          </li>
-          <li class="game" data-event="dpi" data-game="dpi5" data-dynamic>
-            <span class="g-time">14:00</span>
-            <div class="g-main">
-              <span class="g-name">Damen Play-Ins · Spiel 5</span>
-              <span class="g-match">Verlierer Spiel 3 – Gewinner Spiel 4</span>
-            </div>
-            <span class="g-score" hidden></span>
-            <span class="g-chip c-dpi">Damen Play-Ins</span>
-          </li>
-        </ul>
-      </div>
-      <p class="empty-note schedule-note" id="empty-note" hidden>Für diese Auswahl gibt es an diesem Tag keine Spiele.</p>
-      <p class="schedule-note">Alle Zeiten sind Faceoff- (Herren) bzw. Draw-Zeiten (Damen). Erstellt nach dem offiziellen Spielplan des Ausrichters – Änderungen vorbehalten.</p>
-    </div>
-  </section>
-
-  <section class="section" id="playins">
-    <div class="wrap">
-      <div class="section-head">
-        <p class="eyebrow" style="color: var(--men-ink);">Die Play-Ins</p>
-        <h2>So funktionieren die Play-Ins</h2>
-      </div>
-      <div class="playins-grid">
         <article class="playin-card">
-          <h3 style="color: var(--men-ink);">Herren Play-Ins</h3>
-          <p>Stuttgart, Freiburg und München spielen in einer einfachen Runde jeder gegen jeden – insgesamt drei Spiele.</p>
-          <ul class="mini-games">
-            <li><span class="mg-when">Sa 09:00</span><span class="mg-match">Stuttgart – Freiburg <small>Spiel 1</small></span></li>
-            <li><span class="mg-when">Sa 14:00</span><span class="mg-match">München – Stuttgart <small>Spiel 2</small></span></li>
-            <li><span class="mg-when">So 12:45</span><span class="mg-match">München – Freiburg <small>Spiel 3</small></span></li>
+          <h3 style="color: var(--women-ink);">Worum geht es in den Play-Ins?</h3>
+          <p><strong>Kurz erklärt:</strong> Lacrosse wird in Deutschland in einer 1. Liga (Bundesliga, geteilt in Nord und Süd) und einer 2. Liga gespielt. Die beiden besten Teams jeder Bundesliga spielen um die Deutsche Meisterschaft – in den Play-Ins geht es dagegen um die Plätze in der 1. Liga: Die Dritt- und Viertplatzierten der Bundesliga Süd verteidigen ihren Ligaplatz gegen die beiden besten Teams der 2. Liga.</p>
+          <p><strong>Der Modus:</strong> München, Heidelberg, Karlsruhe und Stuttgart starten am Samstag in die erste Runde. Am Sonntag treffen die Siegerinnen in Spiel 3 und die Verliererinnen in Spiel 4 aufeinander – Spiel 5 entscheidet die Platzierung dazwischen.</p>
+          <ul class="event-teams">
+            <li>München</li>
+            <li>Heidelberg</li>
+            <li>Karlsruhe</li>
+            <li>Stuttgart</li>
           </ul>
         </article>
-        <article class="playin-card">
-          <h3 style="color: var(--women-ink);">Damen Play-Ins</h3>
-          <p>München, Heidelberg, Karlsruhe und Stuttgart starten am Samstag in die erste Runde. Am Sonntag treffen die Siegerinnen in Spiel 3 und die Verliererinnen in Spiel 4 aufeinander – Spiel 5 entscheidet die Platzierung dazwischen.</p>
-          <ul class="mini-games">
-            <li><span class="mg-when">Sa 12:45</span><span class="mg-match">München – Heidelberg <small>Spiel 1</small></span></li>
-            <li><span class="mg-when">Sa 15:15</span><span class="mg-match">Karlsruhe – Stuttgart <small>Spiel 2</small></span></li>
-            <li><span class="mg-when">So 10:15</span><span class="mg-match">Sieger Spiel 1 – Sieger Spiel 2 <small>Spiel 3</small></span></li>
-            <li><span class="mg-when">So 11:30</span><span class="mg-match">Verlierer Spiel 1 – Verlierer Spiel 2 <small>Spiel 4</small></span></li>
-            <li><span class="mg-when">So 14:00</span><span class="mg-match">Verlierer Spiel 3 – Gewinner Spiel 4 <small>Spiel 5</small></span></li>
+        <div class="day">
+          <h3 class="day-title">Samstag, 25. Juli 2026</h3>
+          <ul class="games">
+            <li class="game" data-event="dpi" data-game="dpi1">
+              <span class="g-time">12:45</span>
+              <div class="g-main">
+                <span class="g-name">Spiel 1</span>
+                <span class="g-match">München – Heidelberg</span>
+              </div>
+              <span class="g-score" hidden></span>
+              <span class="g-chip c-dpi">Damen Play-Ins</span>
+            </li>
+            <li class="game" data-event="dpi" data-game="dpi2">
+              <span class="g-time">15:15</span>
+              <div class="g-main">
+                <span class="g-name">Spiel 2</span>
+                <span class="g-match">Karlsruhe – Stuttgart</span>
+              </div>
+              <span class="g-score" hidden></span>
+              <span class="g-chip c-dpi">Damen Play-Ins</span>
+            </li>
           </ul>
-        </article>
+        </div>
+        <div class="day">
+          <h3 class="day-title">Sonntag, 26. Juli 2026</h3>
+          <ul class="games">
+            <li class="game" data-event="dpi" data-game="dpi3" data-dynamic>
+              <span class="g-time">10:15</span>
+              <div class="g-main">
+                <span class="g-name">Spiel 3</span>
+                <span class="g-match">Sieger Spiel 1 – Sieger Spiel 2</span>
+              </div>
+              <span class="g-score" hidden></span>
+              <span class="g-chip c-dpi">Damen Play-Ins</span>
+            </li>
+            <li class="game" data-event="dpi" data-game="dpi4" data-dynamic>
+              <span class="g-time">11:30</span>
+              <div class="g-main">
+                <span class="g-name">Spiel 4</span>
+                <span class="g-match">Verlierer Spiel 1 – Verlierer Spiel 2</span>
+              </div>
+              <span class="g-score" hidden></span>
+              <span class="g-chip c-dpi">Damen Play-Ins</span>
+            </li>
+            <li class="game" data-event="dpi" data-game="dpi5" data-dynamic>
+              <span class="g-time">14:00</span>
+              <div class="g-main">
+                <span class="g-name">Spiel 5</span>
+                <span class="g-match">Verlierer Spiel 3 – Gewinner Spiel 4</span>
+              </div>
+              <span class="g-score" hidden></span>
+              <span class="g-chip c-dpi">Damen Play-Ins</span>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
+
+  <!-- ========== Tab 4: Play-Ins Herren ========== -->
+  <section class="panel" id="panel-playins-herren" role="tabpanel" aria-labelledby="tab-playins-herren" hidden>
+    <div class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow" style="color: var(--men-ink);">Play-Ins Herren</p>
+          <h2>Jeder gegen jeden</h2>
+          <p class="lede">Die weiteren Teams aus dem Süden spielen in einer einfachen Runde jeder gegen jeden – verteilt auf beide Turniertage, 25. &amp; 26. Juli.</p>
+        </div>
+        <article class="playin-card">
+          <h3 style="color: var(--men-ink);">Worum geht es in den Play-Ins?</h3>
+          <p><strong>Kurz erklärt:</strong> Lacrosse wird in Deutschland in einer 1. Liga (Bundesliga, geteilt in Nord und Süd) und einer 2. Liga gespielt. Die beiden besten Teams jeder Bundesliga spielen um die Deutsche Meisterschaft – in den Play-Ins geht es dagegen um die Plätze in der 1. Liga: Die Dritt- und Viertplatzierten der Bundesliga Süd verteidigen ihren Ligaplatz gegen die besten Teams der 2. Liga.</p>
+          <p><strong>Der Modus:</strong> Stuttgart, Freiburg und München spielen in einer einfachen Runde jeder gegen jeden – insgesamt drei Spiele: eins am Samstagmorgen, eins am Samstagnachmittag, das letzte am Sonntag.</p>
+          <ul class="event-teams">
+            <li>Stuttgart</li>
+            <li>Freiburg</li>
+            <li>München</li>
+          </ul>
+        </article>
+        <div class="day">
+          <h3 class="day-title">Samstag, 25. Juli 2026</h3>
+          <ul class="games">
+            <li class="game" data-event="hpi" data-game="hpi1">
+              <span class="g-time">09:00</span>
+              <div class="g-main">
+                <span class="g-name">Spiel 1</span>
+                <span class="g-match">Stuttgart – Freiburg</span>
+              </div>
+              <span class="g-score" hidden></span>
+              <span class="g-chip c-hpi">Herren Play-Ins</span>
+            </li>
+            <li class="game" data-event="hpi" data-game="hpi2">
+              <span class="g-time">14:00</span>
+              <div class="g-main">
+                <span class="g-name">Spiel 2</span>
+                <span class="g-match">München – Stuttgart</span>
+              </div>
+              <span class="g-score" hidden></span>
+              <span class="g-chip c-hpi">Herren Play-Ins</span>
+            </li>
+          </ul>
+        </div>
+        <div class="day">
+          <h3 class="day-title">Sonntag, 26. Juli 2026</h3>
+          <ul class="games">
+            <li class="game" data-event="hpi" data-game="hpi3">
+              <span class="g-time">12:45</span>
+              <div class="g-main">
+                <span class="g-name">Spiel 3</span>
+                <span class="g-match">München – Freiburg</span>
+              </div>
+              <span class="g-score" hidden></span>
+              <span class="g-chip c-hpi">Herren Play-Ins</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== Tab 5: Über Lacrosse ========== -->
+  <section class="panel" id="panel-lacrosse" role="tabpanel" aria-labelledby="tab-lacrosse" hidden>
+    <div class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow" style="color: var(--champ-ink);">Über Lacrosse</p>
+          <h2>Das Event &amp; der Sport</h2>
+          <p class="lede">Alles Wichtige zum Turnierwochenende auf einen Blick – und für alle, die Lacrosse noch nicht kennen: eine kurze Einführung in den schnellsten Sport auf zwei Beinen.</p>
+        </div>
+
+        <div class="info-grid">
+          <div class="info-card">
+            <span class="info-label">Termin</span>
+            <p>Deutsche Meisterschaft: Sa, 25. Juli · Play-Ins: Sa &amp; So, 25.–26. Juli 2026</p>
+          </div>
+          <div class="info-card">
+            <span class="info-label">Ort</span>
+            <p>Kunstrasenplatz der TSG Tübingen 1845 e.V., Freibad 3, 72072 Tübingen</p>
+          </div>
+          <div class="info-card">
+            <span class="info-label">Eintritt</span>
+            <p>Frei! Getränke und Speisen gibt es vor Ort – reichlich Auswahl in vielen Varianten.</p>
+          </div>
+          <div class="info-card">
+            <span class="info-label">Livestream</span>
+            <p>Die Spiele der DM werden voraussichtlich auf YouTube gestreamt.</p>
+          </div>
+          <div class="info-card">
+            <span class="info-label">Ausrichter</span>
+            <p>TSG Tübingen, Abteilung Lacrosse · <a href="https://tsg-tuebingen.de/abteilungen/lacrosse/" target="_blank" rel="noopener">tsg-tuebingen.de</a> · <a href="https://www.instagram.com/tuebingenlacrosse" target="_blank" rel="noopener">@tuebingenlacrosse</a></p>
+          </div>
+          <div class="info-card">
+            <span class="info-label">Probetraining</span>
+            <p>Herren: Mo &amp; Mi, 20–22 Uhr · Damen: Mo &amp; Mi, 19:30–21:30 Uhr – Kunstrasen TSG Tübingen. Einfach vorbeikommen!</p>
+          </div>
+        </div>
+
+        <div class="about-block">
+          <h3>Was ist Lacrosse?</h3>
+          <p class="prose">Lacrosse ist ein Ballsport, bei dem ein Hartgummiball mit einem Lacrosse-Schläger (dem Stick) gespielt wird – wer die meisten Tore erzielt, gewinnt. Der Sport stammt aus Nordamerika und wurde von den Ureinwohnern der Ostküste und der Großen Seen als Ritual und Stammestradition gespielt, bekannt als Baggataway oder Tewaraathon („kleiner Bruder des Krieges“).</p>
+          <p class="prose">In Tübingen wird die olympische Variante <strong>Sixes-Lacrosse</strong> gespielt: 5 Feldspieler plus Torwart pro Team, 4 × 8 Minuten, 30 Sekunden Shotclock – schnell, intensiv und auch für Neulinge leicht nachzuvollziehen. Sixes ist 2028 in Los Angeles erstmals seit 1908 wieder olympisch.</p>
+        </div>
+
+        <div class="about-block">
+          <h3>Die Regeln in Kürze</h3>
+          <p class="prose">So funktioniert Sixes-Lacrosse – alles, was man als Zuschauer wissen muss:</p>
+          <ul class="rules-list">
+            <li><strong>Ziel &amp; Spielzeit</strong>Wer mehr Tore schießt, gewinnt. Gespielt wird 4 × 8 Minuten; bei Unentschieden entscheidet eine 3-Minuten-Verlängerung. Jedes Team hat pro Halbzeit ein Timeout.</li>
+            <li><strong>Teams</strong>1 Torwart + 5 Feldspieler, ohne feste Positionen – alle greifen an und verteidigen. Gewechselt wird fliegend, nur der Torwart darf nicht über die Mittellinie.</li>
+            <li><strong>Shotclock</strong>30 Sekunden pro Angriff – wie beim Basketball. Nach einem Tor startet der Ball beim Torwart; das Team hat 10 Sekunden, ihn über die Mittellinie zu bringen („Clearing“).</li>
+            <li><strong>Ballgewinn</strong>Mit dem eigenen Schläger darf auf den Schläger des Gegners geschlagen werden; auch den Körper in den Weg stellen ist erlaubt.</li>
+            <li><strong>Groundballs</strong>Fällt der Ball zu Boden, ist er für alle frei. Kicken ist erlaubt, die Hand darf nicht benutzt werden. Für den Ballträger gibt es keine Schritt- oder Zeitbeschränkung.</li>
+            <li><strong>Fouls</strong>Werden mit Ballverlust und/oder Zeitstrafen geahndet. Landet der Ball im Aus, wechselt der Ballbesitz – außer er wurde abgefälscht oder prallt vom Tor ab.</li>
+            <li><strong>Tore &amp; Torwart</strong>Die Tore sind ca. 1,80 × 1,80 m groß und leicht ins Feld eingerückt – hinter dem Tor wird weitergespielt. Der Torwart hat einen größeren Schlägerkopf mit tiefem Netz für mehr „Saves“.</li>
+            <li><strong>Feld</strong>Gespielt wird auf 70 × 36 m – etwas kleiner als ein Feld-Lacrosse-Feld, das die Größe eines Fußballfelds hat.</li>
+          </ul>
+        </div>
+
+        <div class="about-block">
+          <h3>Mehr erfahren</h3>
+
+          <details class="more">
+            <summary>Von Tewaraathon zu Lacrosse – die Geschichte</summary>
+            <div class="more-body">
+              <p>Die ursprünglichen Spiele wurden teils mit über 100 Teilnehmern über riesige Flächen ausgetragen – Bäume oder Felsen dienten als Tore. Sie dienten unter anderem der Kriegsvorbereitung und dem Austragen von Stammeskonflikten und endeten nicht selten mit schweren Verletzungen. Das ist heute zum Glück nicht mehr der Fall!</p>
+              <p>Seinen heutigen Namen erhielt der Sport im 17. Jahrhundert: Der französische Jesuitenmissionar Jean de Brébeuf fühlte sich durch den gebogenen, mit Netz bespannten Schläger an einen Bischofsstab erinnert – und nannte das Spiel <strong>La Crosse</strong>, das französische Wort dafür.</p>
+              <p>Mehr zur Geschichte: <a href="https://dlaxv.de/lacrosse/" target="_blank" rel="noopener">dlaxv.de/lacrosse</a> · Geschichte in Deutschland: <a href="https://dlaxv.de/geschichte/" target="_blank" rel="noopener">dlaxv.de/geschichte</a></p>
+            </div>
+          </details>
+
+          <details class="more">
+            <summary>Lacrosse heute – Sixes, Olympia &amp; Die Finals</summary>
+            <div class="more-body">
+              <p>In Deutschland wird Lacrosse in drei Disziplinen gespielt: dem klassischen <strong>Feld-Lacrosse</strong>, der Indoor-Variante <strong>Box-Lacrosse</strong> und der olympischen Variante <strong>Sixes</strong>. Sixes ist bei Olympia 2028 in L.A. erstmals seit 1908 wieder vertreten und sorgte bereits bei „Die Finals 2025“ in Dresden für reichlich Aufsehen.</p>
+              <p>Die amtierenden Meister Hamburg (Damen) und Köln (Herren) wollen ihre Titel verteidigen – die Herren bei uns in Tübingen am 25. Juli. Für Tübingen Lacrosse war Dresden im vergangenen Jahr ein absolutes Highlight, auch wenn es „nur“ Platz 4 wurde. Dieses Jahr kämpfen wir wieder um eine Medaille – und geben uns nicht mit Platz 4 zufrieden.</p>
+            </div>
+          </details>
+
+          <details class="more">
+            <summary>Sixes vs. Feld-Lacrosse – die wichtigsten Unterschiede</summary>
+            <div class="more-body">
+              <p>Gemeinsam ist beiden: Zwei Teams, wer mehr Tore schießt, gewinnt. Gespielt wird in vier Vierteln mit fliegenden Wechseln, bei Unentschieden gibt es Verlängerung. Der Ball darf dem Gegner mit Schlägerchecks abgenommen werden, Bodenbälle sind für alle frei, und hinter den ca. 1,80 × 1,80 m großen Toren wird weitergespielt.</p>
+              <div class="compare-scroll">
+                <table class="compare">
+                  <thead>
+                    <tr><th scope="col"></th><th scope="col">Sixes</th><th scope="col">Feld-Lacrosse</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><th scope="row">Spieler</th><td>1 Torwart + 5 Feldspieler, max. 12 im Kader</td><td>1 Torwart + 9 Feldspieler, max. 22 im Kader</td></tr>
+                    <tr><th scope="row">Spielzeit</th><td>4 × 8 Minuten</td><td>4 × 15 Minuten</td></tr>
+                    <tr><th scope="row">Shotclock</th><td>30 Sekunden</td><td>80 Sekunden</td></tr>
+                    <tr><th scope="row">Positionen</th><td>Keine festen Positionen – alle greifen an und verteidigen</td><td>Drei designierte Verteidiger mit langen Schlägern (Long Poles)</td></tr>
+                    <tr><th scope="row">Feld</th><td>70 × 36 m</td><td>Etwa so groß wie ein Fußballfeld</td></tr>
+                    <tr><th scope="row">Nach dem Tor</th><td>Ball startet beim Torwart – 10 Sekunden fürs „Clearing“ über die Mittellinie</td><td>Neustart per Face-off bzw. Draw</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p>Unterm Strich: Sixes ist deutlich schneller, intensiver und für Außenstehende einfacher nachzuvollziehen.</p>
+            </div>
+          </details>
+
+          <details class="more">
+            <summary>Damen &amp; Herren – wo liegt der Unterschied?</summary>
+            <div class="more-body">
+              <p>Im Sixes sind die Regeln bei Damen und Herren fast identisch – Geschwindigkeit und Intensität sind auf beiden Seiten extrem hoch. Die Unterschiede liegen in Ausrüstung und Kontakt:</p>
+              <ul>
+                <li><strong>Schläger:</strong> Das Netz der Damenschläger ist flacher, der Ball fällt leichter heraus – bei den Herren liegt er tiefer.</li>
+                <li><strong>Kontakt:</strong> Bei den Damen ist neben dem Schlag auf den Schläger leichter Körperkontakt erlaubt, bei den Herren gilt Vollkontakt.</li>
+                <li><strong>Schutzausrüstung:</strong> Mundschutz tragen alle. Herren spielen zusätzlich mit Helm, Handschuhen und Armschützern, Damen mit Schutzbrille.</li>
+                <li><strong>Schüsse:</strong> Herren dürfen jederzeit schießen, auch unter Gegnereinwirkung. Bei den Damen darf bei einer Gegenspielerin in der Schussbahn nur kniehoch geschossen werden – zum Schutz des Kopfes.</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+
+        <div class="about-block">
+          <h3>Presse &amp; Kontakt</h3>
+          <p class="prose">Wir stehen gerne für Interviewanfragen zur Verfügung: <a href="mailto:Johanneskirch.JK@googlemail.com">Johannes Kirch</a> oder <a href="mailto:lacrosse@tsg-tuebingen.de">Sebastian von Beschwitz</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
 </main>
 
 <footer class="site-foot">
   <div class="wrap">
-    <p><strong>Deutsche Lacrosse-Meisterschaft 2026</strong> · 25.–26. Juli · Tübingen</p>
-    <p>Ausrichter: <strong>TSG Tübingen</strong></p>
+    <p><strong>Deutsche Lacrosse-Meisterschaft 2026</strong> · 25.–26. Juli · Freibad 3, 72072 Tübingen</p>
+    <div class="foot-logos">
+      <a href="https://tuebingen-lacrosse.de/" target="_blank" rel="noopener"><img src="assets/tuelax-logo.png" alt="Tübingen Lacrosse"></a>
+      <a href="https://tsg-tuebingen.de/abteilungen/lacrosse/" target="_blank" rel="noopener"><img src="assets/tsg-logo.png" alt="TSG Tübingen 1845 e.V."></a>
+    </div>
+    <p>Ausrichter: <strong>TSG Tübingen · Abteilung Lacrosse</strong></p>
   </div>
 </footer>
 
 <script src="games.js"></script>
 <script>
 (function () {
-  // Schedule filter
+  // Tabs
+  var tabs = document.querySelectorAll('.tabbar [role="tab"]');
+  var panels = document.querySelectorAll('.panel');
+  function activateTab(name, updateHash) {
+    var found = false;
+    tabs.forEach(function (t) { if (t.dataset.tab === name) { found = true; } });
+    if (!found) { name = 'spielplan'; }
+    tabs.forEach(function (t) { t.setAttribute('aria-selected', String(t.dataset.tab === name)); });
+    panels.forEach(function (p) { p.hidden = p.id !== 'panel-' + name; });
+    if (updateHash) {
+      history.replaceState(null, '', '#' + name);
+    }
+  }
+  tabs.forEach(function (t) {
+    t.addEventListener('click', function () {
+      activateTab(t.dataset.tab, true);
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    });
+  });
+  window.addEventListener('hashchange', function () {
+    activateTab(location.hash.slice(1), false);
+  });
+  if (location.hash) { activateTab(location.hash.slice(1), false); }
+
+  // Schedule filter (Spielplan tab)
   var buttons = document.querySelectorAll('.filters button');
-  var games = document.querySelectorAll('.game');
-  var days = document.querySelectorAll('.day');
+  var scheduleGames = document.querySelectorAll('#panel-spielplan .game');
+  var scheduleDays = document.querySelectorAll('#panel-spielplan .day');
   var emptyNote = document.getElementById('empty-note');
   buttons.forEach(function (btn) {
     btn.addEventListener('click', function () {
       buttons.forEach(function (b) { b.setAttribute('aria-pressed', String(b === btn)); });
       var f = btn.dataset.filter;
-      games.forEach(function (g) { g.hidden = f !== 'all' && g.dataset.event !== f; });
+      scheduleGames.forEach(function (g) { g.hidden = f !== 'all' && g.dataset.event !== f; });
       var anyDayHidden = false;
-      days.forEach(function (d) {
+      scheduleDays.forEach(function (d) {
         var visible = d.querySelectorAll('.game:not([hidden])').length > 0;
         d.hidden = !visible;
         if (!visible) { anyDayHidden = true; }
