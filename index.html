@@ -235,38 +235,45 @@ button { font: inherit; cursor: pointer; }
   z-index: 20;
   background: var(--pitch-deep);
   border-bottom: 3px solid var(--women);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
 }
 .tabbar .wrap {
   display: flex;
-  gap: 2px;
+  gap: 8px;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  padding: 0 12px;
+  padding: 14px 16px;
   scrollbar-width: none;
 }
 .tabbar .wrap::-webkit-scrollbar { display: none; }
+@media (min-width: 900px) {
+  .tabbar .wrap { flex-wrap: wrap; overflow-x: visible; }
+}
 .tabbar button {
   flex: none;
   appearance: none;
-  background: none;
-  border: none;
-  color: var(--chalk-dim);
+  background: rgba(244, 246, 238, 0.06);
+  border: 2px solid rgba(244, 246, 238, 0.35);
+  border-radius: 999px;
+  color: var(--chalk);
   font-family: var(--display);
   font-stretch: condensed;
   text-transform: uppercase;
-  letter-spacing: 0.07em;
-  font-size: 0.98rem;
+  letter-spacing: 0.06em;
+  font-size: 1rem;
   font-weight: 700;
-  padding: 15px 16px 12px;
-  border-bottom: 3px solid transparent;
-  margin-bottom: -3px;
+  padding: 9px 18px;
   white-space: nowrap;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
 }
-.tabbar button:hover { color: var(--chalk); }
+.tabbar button:hover {
+  border-color: var(--women);
+  color: var(--women);
+}
 .tabbar button[aria-selected="true"] {
-  color: var(--chalk);
-  border-bottom-color: var(--women);
-  background: rgba(244, 246, 238, 0.07);
+  background: var(--women);
+  border-color: var(--women);
+  color: #241B04;
 }
 .panel[hidden] { display: none; }
 
@@ -463,6 +470,7 @@ button { font: inherit; cursor: pointer; }
   border-bottom: 2px solid var(--ink);
 }
 .games { list-style: none; margin: 0; padding: 0; }
+.game[hidden] { display: none; }
 .game {
   display: grid;
   grid-template-columns: 70px 1fr auto auto;
