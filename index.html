@@ -210,6 +210,16 @@ button { font: inherit; cursor: pointer; }
   border-radius: 999px;
 }
 .fact.fact-live { border-color: var(--women); color: var(--women); }
+a.fact.fact-link {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 2px;
+  text-decoration-color: var(--women);
+}
+a.fact.fact-link:hover {
+  border-color: var(--women);
+  color: var(--women);
+}
 @media (prefers-reduced-motion: no-preference) {
   .hero-inner > * { animation: rise 0.7s ease-out backwards; }
   .hero-inner > *:nth-child(2) { animation-delay: 0.08s; }
@@ -742,7 +752,7 @@ details.more .more-body li strong { color: var(--ink); }
     <p class="beer-callout"><span class="beer-emoji" aria-hidden="true">🍻</span>Die ersten 100 Bier gehen auf uns.</p>
     <div class="hero-facts">
       <span class="fact">25.–26. Juli 2026</span>
-      <span class="fact">Freibad 3 · Tübingen</span>
+      <a class="fact fact-link" href="https://www.google.com/maps/place/Sports+Field/@48.5090885,9.0412237,18z/data=!4m6!3m5!1s0x4799fb0055a6aa75:0x6360f2dca7eb7d4b!8m2!3d48.5095721!4d9.0405032!16s%2Fg%2F11xrldtbpg?entry=ttu&amp;g_ep=EgoyMDI2MDcxNC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener">📍 Freibad 3 · Tübingen</a>
       <span class="fact fact-live" id="countdown">Erstes Faceoff: Sa, 09:00 Uhr</span>
     </div>
   </div>
@@ -1123,7 +1133,7 @@ details.more .more-body li strong { color: var(--ink); }
           </div>
           <div class="info-card">
             <span class="info-label">Ort</span>
-            <p>Kunstrasenplatz der TSG Tübingen 1845 e.V., Freibad 3, 72072 Tübingen</p>
+            <p>Kunstrasenplatz der TSG Tübingen 1845 e.V., Freibad 3, 72072 Tübingen<br><a href="https://www.google.com/maps/place/Sports+Field/@48.5090885,9.0412237,18z/data=!4m6!3m5!1s0x4799fb0055a6aa75:0x6360f2dca7eb7d4b!8m2!3d48.5095721!4d9.0405032!16s%2Fg%2F11xrldtbpg?entry=ttu&amp;g_ep=EgoyMDI2MDcxNC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener">📍 In Google Maps öffnen&nbsp;↗</a></p>
           </div>
           <div class="info-card">
             <span class="info-label">Eintritt</span>
@@ -1233,7 +1243,7 @@ details.more .more-body li strong { color: var(--ink); }
 
 <footer class="site-foot">
   <div class="wrap">
-    <p><strong>Deutsche Lacrosse-Meisterschaft 2026</strong> · 25.–26. Juli · Freibad 3, 72072 Tübingen</p>
+    <p><strong>Deutsche Lacrosse-Meisterschaft 2026</strong> · 25.–26. Juli · <a href="https://www.google.com/maps/place/Sports+Field/@48.5090885,9.0412237,18z/data=!4m6!3m5!1s0x4799fb0055a6aa75:0x6360f2dca7eb7d4b!8m2!3d48.5095721!4d9.0405032!16s%2Fg%2F11xrldtbpg?entry=ttu&amp;g_ep=EgoyMDI2MDcxNC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener">📍 Freibad 3, 72072 Tübingen</a></p>
     <div class="foot-logos">
       <a href="https://tuebingen-lacrosse.de/" target="_blank" rel="noopener"><img src="assets/tuelax-logo.png" alt="Tübingen Lacrosse"></a>
       <a href="https://tsg-tuebingen.de/abteilungen/lacrosse/" target="_blank" rel="noopener"><img src="assets/tsg-logo.png" alt="TSG Tübingen 1845 e.V."></a>
