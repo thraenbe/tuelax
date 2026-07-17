@@ -259,6 +259,7 @@ a.fact.fact-link:hover {
 @media (min-width: 900px) {
   .tabbar .wrap { flex-wrap: wrap; overflow-x: visible; }
 }
+.tab-short { display: none; }
 .tabbar button {
   flex: none;
   appearance: none;
@@ -284,6 +285,28 @@ a.fact.fact-link:hover {
   background: var(--women);
   border-color: var(--women);
   color: #241B04;
+}
+@media (max-width: 899px) {
+  .tabbar .wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7px;
+    overflow-x: visible;
+    padding: 12px 10px;
+  }
+  .tabbar button {
+    width: 100%;
+    min-width: 0;
+    padding: 10px 4px;
+    font-size: clamp(0.78rem, 2.4vw, 0.95rem);
+    letter-spacing: 0.03em;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .tabbar button:last-child { grid-column: 1 / -1; }
+  .tab-full { display: none; }
+  .tab-short { display: inline; }
 }
 .panel[hidden] { display: none; }
 
@@ -761,7 +784,7 @@ details.more .more-body li strong { color: var(--ink); }
 <nav class="tabbar" aria-label="Bereiche der Seite">
   <div class="wrap" role="tablist">
     <button type="button" role="tab" id="tab-spielplan" aria-controls="panel-spielplan" aria-selected="true" data-tab="spielplan">Spielplan</button>
-    <button type="button" role="tab" id="tab-meisterschaft" aria-controls="panel-meisterschaft" aria-selected="false" data-tab="meisterschaft">Meisterschaft Herren</button>
+    <button type="button" role="tab" id="tab-meisterschaft" aria-controls="panel-meisterschaft" aria-selected="false" data-tab="meisterschaft"><span class="tab-full">Meisterschaft Herren</span><span class="tab-short">DM Herren</span></button>
     <button type="button" role="tab" id="tab-playins-damen" aria-controls="panel-playins-damen" aria-selected="false" data-tab="playins-damen">Play-Ins Damen</button>
     <button type="button" role="tab" id="tab-playins-herren" aria-controls="panel-playins-herren" aria-selected="false" data-tab="playins-herren">Play-Ins Herren</button>
     <button type="button" role="tab" id="tab-lacrosse" aria-controls="panel-lacrosse" aria-selected="false" data-tab="lacrosse">Über Lacrosse</button>
