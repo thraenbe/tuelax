@@ -709,6 +709,146 @@ details.more .more-body li strong { color: var(--ink); }
 }
 .compare td { color: var(--ink-soft); }
 
+/* ---------- Poster cards (Herren/Damen, fixed colors in both themes) ---------- */
+.poster {
+  border-radius: 12px;
+  overflow: hidden;
+  margin-top: 18px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.2);
+  color: #FFFFFF;
+}
+.poster + .poster { margin-top: 26px; }
+.poster-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+  padding: 16px 22px;
+}
+.poster-herren .poster-head {
+  background: linear-gradient(100deg, #0F0F10 0%, #0F0F10 52%, #C22014 52.3%, #C22014 60%, #E19A16 60.3%);
+}
+.poster-damen .poster-head {
+  background: linear-gradient(100deg, #B41E2C 0%, #B41E2C 58%, #E23A1D 58.3%);
+}
+.poster-head h4 {
+  margin: 0;
+  font-family: var(--display);
+  font-stretch: condensed;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: clamp(1.3rem, 3.5vw, 1.7rem);
+  line-height: 1.1;
+  color: #FFFFFF;
+}
+.poster-tag {
+  font-family: var(--display);
+  font-stretch: condensed;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.82rem;
+  font-weight: 700;
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  border-radius: 999px;
+  padding: 4px 14px;
+}
+.poster-body { padding: 20px 22px 24px; }
+.poster-herren .poster-body {
+  background: linear-gradient(150deg, #E23A1D 0%, #C21F1F 55%, #8F1B2E 100%);
+}
+.poster-damen .poster-body {
+  background: linear-gradient(150deg, #E23A1D 0%, #C81F2E 55%, #9C1B26 100%);
+}
+.poster-note {
+  font-size: 1.02rem;
+  font-weight: 600;
+  border-left: 4px solid rgba(255, 255, 255, 0.85);
+  padding-left: 14px;
+  max-width: 66ch;
+}
+.poster-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
+  gap: 12px;
+  margin-top: 20px;
+}
+.p-stat {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 10px;
+  padding: 13px 16px;
+}
+.p-stat b {
+  display: block;
+  font-family: var(--display);
+  font-stretch: condensed;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-size: 1.45rem;
+  line-height: 1.15;
+  margin-bottom: 4px;
+}
+.p-stat span {
+  font-size: 0.92rem;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.92);
+  display: block;
+}
+.p-stat .karte {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  margin-right: 4px;
+  vertical-align: 0;
+}
+.karte-gruen { background: #3BA55C; }
+.karte-gelb { background: #F2C230; }
+.karte-rot { background: #E5484D; }
+.poster-erfolge { margin-top: 22px; }
+.poster-erfolge h5 {
+  margin: 0 0 12px;
+  font-family: var(--display);
+  font-stretch: condensed;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 1.05rem;
+  color: #FFFFFF;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+  padding-bottom: 8px;
+}
+.erfolge-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+.erfolge-grid h6 {
+  margin: 0 0 6px;
+  font-family: var(--display);
+  font-stretch: condensed;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+.erfolge-grid ul {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+.erfolge-grid li { margin-bottom: 3px; }
+.poster-link {
+  margin-top: 20px;
+  font-size: 0.95rem;
+}
+.poster-link a {
+  color: #FFFFFF;
+  font-weight: 700;
+  text-underline-offset: 3px;
+}
+
 /* ---------- Play-Ins detail ---------- */
 .playin-card {
   background: var(--surface);
@@ -1195,6 +1335,75 @@ details.more .more-body li strong { color: var(--ink); }
             <li><strong>Tore &amp; Torwart</strong>Die Tore sind ca. 1,80 × 1,80 m groß und leicht ins Feld eingerückt – hinter dem Tor wird weitergespielt. Der Torwart hat einen größeren Schlägerkopf mit tiefem Netz für mehr „Saves“.</li>
             <li><strong>Feld</strong>Gespielt wird auf 70 × 36 m – etwas kleiner als ein Feld-Lacrosse-Feld, das die Größe eines Fußballfelds hat.</li>
           </ul>
+        </div>
+
+        <div class="about-block">
+          <h3>Die Varianten: Herren &amp; Damen</h3>
+          <p class="prose">Herren und Damen spielen Sixes nach fast identischen Regeln – die Unterschiede stecken im Kontakt und in der Ausrüstung. Die beiden Steckbriefe nach den Postern von Deutschland Lacrosse:</p>
+
+          <article class="poster poster-herren">
+            <div class="poster-head">
+              <h4>Deutschland Lacrosse</h4>
+              <span class="poster-tag">Herren</span>
+            </div>
+            <div class="poster-body">
+              <p class="poster-note">Die Herren-Variante wird mit Vollkontakt gespielt. Die Spieler tragen Schutzausrüstung und der Ball liegt tief im Schläger.</p>
+              <div class="poster-grid">
+                <div class="p-stat"><b>1993</b><span>entstand der erste deutsche Verein.</span></div>
+                <div class="p-stat"><b>1998</b><span>wurde der Deutsche Lacrosse Verband gegründet.</span></div>
+                <div class="p-stat"><b>Seit 2015</b><span>bringt der DLaxV Lacrosse in den Schulsport und hat bereits über 500 Schulen erreicht.</span></div>
+                <div class="p-stat"><b>Seit 2024</b><span>ist der DLaxV Mitglied im Deutschen Olympischen Sportbund (DOSB).</span></div>
+                <div class="p-stat"><b>ca. 6.000</b><span>Mitglieder spielen Lacrosse in über 60 Vereinen.</span></div>
+                <div class="p-stat"><b>3 Modi</b><span>werden im Ligabetrieb gespielt: Feld-, Box- und Sixes-Lacrosse.</span></div>
+              </div>
+              <div class="poster-erfolge">
+                <h5>Erfolge</h5>
+                <div class="erfolge-grid">
+                  <div>
+                    <h6>Herren</h6>
+                    <ul>
+                      <li>9. Platz WM (Feld) 2014 und 2019</li>
+                      <li>2. Platz EM (Box) 2023</li>
+                      <li>7. Platz World Games (Sixes) 2022</li>
+                      <li>2. Platz Hong Kong Sixes 2023</li>
+                      <li>2. Platz U19-EM (Feld) 2019</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h6>Damen</h6>
+                    <ul>
+                      <li>4. Platz EM (Feld) 2012</li>
+                      <li>14. Platz WM (Feld) 2022</li>
+                      <li>8. Platz U19-WM 2019</li>
+                      <li>2. Platz Hong Kong Sixes 2024</li>
+                      <li>4. Platz EM Sixes Qualifier 2024</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <p class="poster-link">Erfahre noch mehr: <a href="https://deutschlandlacrosse.de" target="_blank" rel="noopener">deutschlandlacrosse.de&nbsp;↗</a></p>
+            </div>
+          </article>
+
+          <article class="poster poster-damen">
+            <div class="poster-head">
+              <h4>Sixes Lacrosse</h4>
+              <span class="poster-tag">Damen</span>
+            </div>
+            <div class="poster-body">
+              <p class="poster-note">Die Damen-Variante wird mit leichtem Körperkontakt gespielt. Die Spielerinnen tragen einen Mund- und wahlweise einen Augenschutz. Der Ball liegt hoch im Schläger.</p>
+              <div class="poster-grid">
+                <div class="p-stat"><b>4 × 8 Min.</b><span>Spielzeit (fortlaufend, Stopclock in den letzten 2 Minuten im letzten Viertel).</span></div>
+                <div class="p-stat"><b>6 Spielerinnen</b><span>5 auf dem Feld und ein Goalie (fliegende Wechsel).</span></div>
+                <div class="p-stat"><b>30 Sek.</b><span>Zeit für einen Angriff. Die Angriffszeit wird ab Ballbesitz und bei direktem Schuss aufs Tor bzw. den Goalie erneut gestartet.</span></div>
+                <div class="p-stat"><b>10 Sek.</b><span>um aus der eigenen Hälfte zu kommen. Rückpass in die eigene Hälfte ist verboten.</span></div>
+                <div class="p-stat"><b>Draw</b><span>zu Beginn der Viertel (Ausnahmen bei Strafen). Nach einem Tor startet der Ball beim Goalie.</span></div>
+                <div class="p-stat"><b>180 km/h</b><span>kann der geschossene Ball erreichen.</span></div>
+                <div class="p-stat"><b>70 × 36 m</b><span>groß ist das Spielfeld – die Spielerinnen dürfen den Ball beliebig lange im Schläger halten.</span></div>
+                <div class="p-stat"><b>Strafen</b><span><span class="karte karte-gruen"></span>30 Sek. Minor (Grüne Karte)<br><span class="karte karte-gelb"></span>60 Sek. Major (Gelbe Karte)<br><span class="karte karte-rot"></span>120 Sek. Spielausschluss (Rote Karte)</span></div>
+              </div>
+            </div>
+          </article>
         </div>
 
         <div class="about-block">
